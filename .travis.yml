@@ -1,0 +1,4 @@
+language: php
+rvm:
+ - 8.2
+ - laravel
