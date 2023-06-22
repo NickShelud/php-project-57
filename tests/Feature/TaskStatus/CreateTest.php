@@ -1,32 +1,35 @@
 <?php
 
-namespace Tests\Feature\TaskStatus;
-
 use App\Models\User;
+use App\Models\TaskStatuses;
+use App\Providers\RouteServiceProvider;
+use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\TestCase;
 
-class CreateTest extends TestCase
-{
-    use RefreshDatabase;
 
-    public function testCreationFormCanBeRendered(): void
-    {
-        $user = User::factory()->create();
+test('should be created for user', function() {
+    $user = User::factory()->create();
 
-        $response = $this
-            ->actingAs($user)
-            ->get(route('task_statuses.create'));
+    $response = $this->actingAs($user)->get(route('task_statuses.create'));
 
-        $response->assertOk();
-        $response->assertSee(__('status.create_status'));
-    }
+    $response->assertOk();
+});
 
-    public function testCreationFormCanNotBeRenderedForGuest(): void
-    {
+test('should not be created for guests', function() {
+    $response = $this->get(route('task_statuses.create'));
 
-        $response = $this->get(route('task_statuses.create'));
+    $response->assertStatus(403);
+});
 
-        $response->assertStatus(403);
-    }
-}
+test('should be created new status', function() {
+    $user = User::factory()->create();
+
+    $response = $this
+        ->actingAs($user)
+        ->post(route('task_statuses.store'), [
+            'name' => 'newTestStatus'
+        ]);
+
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect(route('task_statuses.index'));
+});

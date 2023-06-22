@@ -18,5 +18,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+        \App\Models\TaskStatuses::factory()->create([
+            'name' => 'Новая'
+        ]);
+
+        \App\Models\TaskStatuses::factory()->create([
+            'name' => 'Завершена'
+        ]);
+
+        \App\Models\TaskStatuses::factory()->create([
+            'name' => 'Выполняется'
+        ]);
+
+        \App\Models\TaskStatuses::factory()->create([
+            'name' => 'В архиве'
+        ]);
     }
 }

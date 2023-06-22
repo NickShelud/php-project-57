@@ -12,3 +12,6 @@ install:
 
 validate:
 	composer validate
+
+refresh:
+	php artisan migrate:refresh --seed
