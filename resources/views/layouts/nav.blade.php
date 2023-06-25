@@ -10,26 +10,26 @@
         rel="stylesheet" 
         integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" 
         crossorigin="anonymous">
-    <title>Менеджер задач</title>
+    <title>{{__('trans.nav.name')}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
     <nav class="">
         <div class="bg-gray-800 border-gray-200 py-2.5 dark:bg-gray-900 shadow-md">
             <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-autor pt-6 pb-6">
-                <a href="/" class="flex text-gray-300">Менеджер задач</a>
+                <a href="/" class="flex text-gray-300">{{__('trans.nav.name')}}</a>
                 <div class="items-center justify-between lg:flex lg:w-auto lg:order-1">
-                        <a href="{{ route('tasks.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Задачи</a>
-                        <a href=" {{ route('task_statuses.index') }} " class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Статусы</a>
-                        <a href="*" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Метки</a>
+                        <a href="{{ route('tasks.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.tasks')}}</a>
+                        <a href=" {{ route('task_statuses.index') }} " class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.statuses')}}</a>
+                        <a href="*" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.marks')}}</a>
                 </div>
                 <div class="flex lg:order-2">
                 @guest
-                    <a href="{{route('login')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">login</a>
-                    <a href="{{route('register')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">Registration</a>
+                    <a href="{{route('login')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('trans.nav.login')}}</a>
+                    <a href="{{route('register')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">{{__('trans.nav.registration')}}</a>
                 @endguest
                 @auth
-                    <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">log out</a>
+                    <a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('trans.nav.logout')}}</a>
                 @endauth
                 </div>
             </div>

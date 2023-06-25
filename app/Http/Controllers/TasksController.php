@@ -16,9 +16,10 @@ class TasksController extends Controller
     public function index()
     {
         $users = User::all();
-        $tasks = Tasks::select('tasks.*', 'users.name as author', 'task_statuses.name as status')
+        $tasks = Tasks::select('tasks.*', 'users.name as author', 'task_statuses.name as status', 'users.name as performer')
             ->join('users', 'tasks.created_by_id', '=', 'users.id')
             ->join('task_statuses', 'tasks.status_id', '=', 'task_statuses.id')
+            ->leftjoin('users as performers', 'tasks.assigned_to_id', '=', 'performers.id')
             ->paginate(15);
         
 
@@ -31,11 +32,14 @@ class TasksController extends Controller
      */
     public function create()
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
         $tasks = new Tasks();
         $statuses = TaskStatuses::pluck('name', 'id');
-        $performers = User::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
 
-        return view('task.create', compact('tasks', 'statuses', 'performers'));
+        return view('task.create', compact('tasks', 'statuses', 'users'));
     }
 
     /**
@@ -43,13 +47,16 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        $us = User::pluck('name', 'id');
-        var_dump($us);
+        if (Auth::user() === null) {
+            abort(403);
+        }
         $user = User::find(Auth::id())->name;
         
         $data = $this->validate($request, [
             'name' => 'required',
             'status_id' => 'required',
+            'description' => 'nullable',
+            'assigned_to_id' => 'nullable'
         ]);
 
         $data['created_by_id'] = Auth::id();
@@ -77,20 +84,15 @@ class TasksController extends Controller
      */
     public function edit($tasks)
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
         $tasks = Tasks::findOrFail($tasks);
 
-        $statuses = TaskStatuses::all();
-        $users = User::all();
-        $statuses = $statuses->reduce(function($acc, $status) {
-            $acc[$status->id] = $status->name;
-            return $acc;
-        }, []);
-        $performers = $users->reduce(function($acc, $status) {
-            $acc[$status->id] = $status->name;
-            return $acc;
-        }, []);
+        $statuses = TaskStatuses::pluck('name', 'id');
+        $users = User::pluck('name', 'id');
 
-        return view('task.edit', compact('tasks', 'statuses', 'performers'));
+        return view('task.edit', compact('tasks', 'statuses', 'users'));
     }
 
     /**
@@ -98,6 +100,9 @@ class TasksController extends Controller
      */
     public function update(Request $request, $tasks)
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
         $task = Tasks::findOrFail($tasks);
 
         $data = $this->validate($request, [

@@ -46,7 +46,7 @@ class TaskStatusesController extends Controller
         ]);
 
         if($data) {
-            flash('Status was create')->success();
+            flash(__('trans.flash.statusCreate'))->success();
         } else {
             flash('Not create')->error();
         }
@@ -96,7 +96,7 @@ class TaskStatusesController extends Controller
         ]);
 
         if($data) {
-            flash('Status was update')->success();
+            flash(__('trans.flash.statusUpdate'))->success();
         } else {
             flash('Not update')->error();
         }
@@ -119,6 +119,7 @@ class TaskStatusesController extends Controller
 
         if ($status) {
             $status->delete();
+            flash(__('trans.flash.delete'))->success();
         }
 
         return redirect()->route('task_statuses.index');

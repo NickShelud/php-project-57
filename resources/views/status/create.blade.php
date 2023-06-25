@@ -4,6 +4,6 @@
 <br>
 {{ Form::model($status, ['route' => 'task_statuses.store']) }}
     @include('status.form')
-    {{ Form::submit('Создать') }}
+    {{ Form::submit(__('trans.create')) }}
 {{ Form::close() }}
 @endsection

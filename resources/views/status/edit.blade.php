@@ -5,6 +5,13 @@
 <br>
 {{ Form::model($status, ['route' => ['task_statuses.update', $status], 'method' => 'PATCH']) }}
     @include('status.form')
-    {{ Form::submit('Обновить') }}
+    <div>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    {{ Form::submit(__('trans.update')) }}
 {{ Form::close() }}
 @endsection
