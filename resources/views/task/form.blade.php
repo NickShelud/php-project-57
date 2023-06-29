@@ -7,4 +7,4 @@
 {{ Form::label('assigned_to_id', __('trans.task.performer')) }}
 {{ Form::select('assigned_to_id', $users, $tasks->assigned_to_id, ['placeholder' => "----------"]) }}
 {{ Form::label('label_id', __('trans.nav.label')) }}
-{{ Form::select('label_id', $labels, $tasks->label_id) }}
+{{ Form::select('label_id', $labels, $tasks->label_id, ['placeholder' => '        ']) }}
