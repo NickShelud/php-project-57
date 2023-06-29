@@ -22,4 +22,9 @@ class Label extends Model
     {
         return $this->hasMany(Tasks::class);
     }
+
+    public function scopeLabelNameById($query, $id)
+    {
+        return $query->where('id', $id)->pluck('name');
+    }
 }

@@ -25,7 +25,7 @@
         <td class="border-b border-dashed text-left">{{$label->description}}</td>
         <td class="border-b border-dashed text-left">{{$label->created_at->format('d.m.Y')}}</td>
 
-        
+        @auth
         <td class="border-b border-dashed text-left">
         <a href="{{ route('labels.edit', ['label' => $label->id]) }}">{{__('trans.edit')}}</a>
         <a href="{{ route('labels.destroy', ['label' => $label->id]) }}" 
@@ -36,7 +36,7 @@
         </a>
 
         </td>
-        
+        @endauth
     </tr>
 
     </tbody>

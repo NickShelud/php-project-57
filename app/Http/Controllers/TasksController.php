@@ -58,7 +58,8 @@ class TasksController extends Controller
             'name' => 'required',
             'status_id' => 'required',
             'description' => 'nullable',
-            'assigned_to_id' => 'nullable'
+            'assigned_to_id' => 'nullable',
+            'label_id' => 'nullable'
         ]);
 
         if($data) {
@@ -83,8 +84,10 @@ class TasksController extends Controller
     {
         $tasks = Tasks::findOrFail($tasks);
         $status = TaskStatuses::statusNameById($tasks->status_id)->all();
+        $label = Label::labelNameById($tasks->label_id)->all();
+        var_dump($label);
 
-        return view('task.show', compact('tasks', 'status'));
+        return view('task.show', compact('tasks', 'status', 'label'));
     }
 
     /**
@@ -99,8 +102,9 @@ class TasksController extends Controller
 
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
 
-        return view('task.edit', compact('tasks', 'statuses', 'users'));
+        return view('task.edit', compact('tasks', 'statuses', 'users', 'labels'));
     }
 
     /**
@@ -116,6 +120,9 @@ class TasksController extends Controller
         $data = $this->validate($request, [
             'name' => 'required',
             'status_id' => 'required',
+            'description' => 'nullable',
+            'assigned_to_id' => 'nullable',
+            'label_id' => 'nullable'
         ]);
 
         $task->fill($data);
@@ -136,6 +143,9 @@ class TasksController extends Controller
 
         if ($task) {
             $task->delete();
+            flash(__('trans.flash.taskDelete'))->success();
+        } else {
+            flash(__('trans.flash.taskNotDelete'))->error();
         }
 
         return redirect()->route('tasks.index');

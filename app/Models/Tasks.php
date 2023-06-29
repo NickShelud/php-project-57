@@ -10,7 +10,7 @@ class Tasks extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id'];
+    protected $fillable = ['name', 'description', 'status_id', 'created_by_id', 'assigned_to_id', 'label_id'];
 
     public function creator(): BelongsTo
     {
@@ -20,5 +20,10 @@ class Tasks extends Model
     public function status(): BelongsTo
     {
         return $this->belongsTo(TaskStatuses::class);
+    }
+
+    public function label(): hasOne
+    {
+        return $this->hasOne(Label::class);    
     }
 }

@@ -31,7 +31,7 @@ test('should be update new status', function() {
     $response = $this
         ->actingAs($user)
         ->patch(route('task_statuses.update', ['task_status' => $taskStatus->id]), [
-            'name' => $taskStatus->name
+            'name' => 'test'
         ]);
 
         $response->assertSessionHasNoErrors();

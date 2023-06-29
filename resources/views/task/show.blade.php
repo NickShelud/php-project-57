@@ -9,7 +9,7 @@
         <p><span class="font-black">{{__('trans.name')}}:</span> {{ $tasks->name }}</p>
         <p><span class="font-black">{{__('trans.task.status')}}:</span> {{ $status[0] }}</p>
         <p><span class="font-black">{{__('trans.task.description')}}:</span> {{ $tasks->description }}</p>
-                <p><span class="font-black">{{__('trans.nav.label')}}:</span></p>
+        <p><span class="font-black">{{__('trans.nav.label')}}:</span> {{ $label[0] }}</p>
 </div>
 
 @endsection

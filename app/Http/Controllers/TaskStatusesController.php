@@ -43,7 +43,7 @@ class TaskStatusesController extends Controller
         }
         
         $data = $this->validate($request, [
-            'name' => 'required|max:20|unique:task_statuses'
+            'name' => 'required|unique:task_statuses'
         ]);
 
         if($data) {
@@ -70,30 +70,26 @@ class TaskStatusesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($taskStatuses)
+    public function edit(TaskStatuses $taskStatuses)
     {
         if (Auth::user() === null) {
             abort(403);
         }
-        $status = TaskStatuses::findOrFail($taskStatuses);
-
-        return view('status.edit', compact('status'));
+        
+        return view('status.edit', compact('taskStatuses'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $taskStatuses)
+    public function update(Request $request, TaskStatuses $taskStatuses)
     {
         if (Auth::user() === null) {
             abort(403);
         }
 
-        $status = TaskStatuses::findOrFail($taskStatuses);
-        
-
         $data = $this->validate($request, [
-            'name' => 'required|max:20|unique:task_statuses,name'. $status->id,
+            'name' => 'required|unique:task_statuses,name'. $taskStatuses->id,
         ]);
 
         if($data) {
@@ -102,8 +98,8 @@ class TaskStatusesController extends Controller
             flash('Not update')->error();
         }
         
-        $status->fill($data);
-        $status->save();
+        $taskStatuses->fill($data);
+        $taskStatuses->save();
 
         return redirect()->route('task_statuses.index');
     }
@@ -111,21 +107,21 @@ class TaskStatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($taskStatuses)
+    public function destroy(TaskStatuses $taskStatuses)
     {
         if (Auth::user() === null) {
             abort(403);
         }
-        $status = TaskStatuses::find($taskStatuses);
 
-        $taskStatusId = Tasks::where('status_id', $taskStatuses)->get();
+        $taskStatusId = Tasks::where('status_id', $taskStatuses->status_id)->exists();
 
-        if (!$taskStatusId and $status) {
-            $status->delete();
-            flash(__('trans.flash.statusDelete'))->success();
-        } else {
+        if ($taskStatusId) {
             flash(__('trans.flash.statusNotDelete'))->error();
+            return redirect()->route('task_statuses.index');
         }
+        
+        $taskStatuses->delete();
+        flash(__('trans.flash.statusDelete'))->success();
 
         return redirect()->route('task_statuses.index');
     }

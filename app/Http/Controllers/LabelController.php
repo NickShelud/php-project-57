@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Label;
-use App\Model\Tasks;
+use App\Models\Tasks;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class LabelController extends Controller
 {
@@ -23,6 +24,10 @@ class LabelController extends Controller
      */
     public function create()
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
+
         $label = new Label();
 
         return view('label.create', compact('label'));
@@ -33,6 +38,9 @@ class LabelController extends Controller
      */
     public function store(Request $request)
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
         $data = $this->validate($request, [
             'name' => 'required',
             'description' => 'nullable'
@@ -64,6 +72,9 @@ class LabelController extends Controller
      */
     public function edit(Label $label)
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
         return view('label.edit', compact('label'));
     }
 
@@ -72,6 +83,9 @@ class LabelController extends Controller
      */
     public function update(Request $request, Label $label)
     {
+        if (Auth::user() === null) {
+            abort(403);
+        }
         $data = $this->validate($request, [
             'name' => 'required',
             'description' => 'nullable'
@@ -96,13 +110,16 @@ class LabelController extends Controller
      */
     public function destroy(Label $label)
     {
-        $task = Tasks::where('label_id', $label->id)->first();
+        if (Auth::user() === null) {
+            abort(403);
+        }
+        $task = Tasks::where('label_id', $label->id)->exists();
 
         if(!$task and $label) {
-            $label->destroy();
+            $label->delete();
             flash(__('trans.flash.labelDelete'))->success();
         } else {
-            flash(__('trans.flash.labelNotDelete'))->success();
+            flash(__('trans.flash.labelNotDelete'))->error();
         }
 
         return redirect()->route('labels.index');
