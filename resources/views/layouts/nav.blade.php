@@ -21,7 +21,7 @@
                 <div class="items-center justify-between lg:flex lg:w-auto lg:order-1">
                         <a href="{{ route('tasks.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.tasks')}}</a>
                         <a href=" {{ route('task_statuses.index') }} " class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.statuses')}}</a>
-                        <a href="*" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.marks')}}</a>
+                        <a href="{{ route('labels.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.label')}}</a>
                 </div>
                 <div class="flex lg:order-2">
                 @guest

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Tasks;
 use App\Models\User;
 use App\Models\TaskStatuses;
+use App\Models\Label;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -38,8 +39,9 @@ class TasksController extends Controller
         $tasks = new Tasks();
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
+        $labels = Label::pluck('name', 'id');
 
-        return view('task.create', compact('tasks', 'statuses', 'users'));
+        return view('task.create', compact('tasks', 'statuses', 'users', 'labels'));
     }
 
     /**
@@ -58,6 +60,12 @@ class TasksController extends Controller
             'description' => 'nullable',
             'assigned_to_id' => 'nullable'
         ]);
+
+        if($data) {
+            flash(__('trans.flash.taskCreate'))->success();
+        } else {
+            flash(__('trans.flash.taskNotCreate'))->error();
+        }
 
         $data['created_by_id'] = Auth::id();
 

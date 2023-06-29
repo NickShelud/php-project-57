@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\TaskStatuses;
+use App\Models\Tasks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
@@ -117,9 +118,13 @@ class TaskStatusesController extends Controller
         }
         $status = TaskStatuses::find($taskStatuses);
 
-        if ($status) {
+        $taskStatusId = Tasks::where('status_id', $taskStatuses)->get();
+
+        if (!$taskStatusId and $status) {
             $status->delete();
-            flash(__('trans.flash.delete'))->success();
+            flash(__('trans.flash.statusDelete'))->success();
+        } else {
+            flash(__('trans.flash.statusNotDelete'))->error();
         }
 
         return redirect()->route('task_statuses.index');

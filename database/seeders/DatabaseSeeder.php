@@ -33,5 +33,25 @@ class DatabaseSeeder extends Seeder
         \App\Models\TaskStatuses::factory()->create([
             'name' => 'В архиве'
         ]);
+
+        \App\Models\Label::factory()->create([
+            'name' => 'ошибка',
+            'description' => 'Какая-то ошибка в коде или проблема с функциональностью'
+        ]);
+
+        \App\Models\Label::factory()->create([
+            'name' => 'документация',
+            'description' => 'Задача которая касается документации'
+        ]);
+
+        \App\Models\Label::factory()->create([
+            'name' => 'дубликат',
+            'description' => 'Повтор другой задачи'
+        ]);
+
+        \App\Models\Label::factory()->create([
+            'name' => 'доработка',
+            'description' => 'Новая фича, которую нужно запилить'
+        ]);
     }
 }

@@ -18,6 +18,7 @@ return new class extends Migration
             $table->bigInteger('status_id')->constrained('task_statuses');
             $table->bigInteger('created_by_id')->constrained('users');
             $table->bigInteger('assigned_to_id')->nullable()->constrained('users');
+            $table->bigInteger('label_id')->nullable()->constrained('labels');
             $table->timestamps();
         });
     }

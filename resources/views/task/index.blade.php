@@ -19,7 +19,7 @@
         <th></th>
         </thead>
     @foreach ($tasks as $task)
-    
+    @include('flash::message')
     <tbody>
     <tr>
         <td class="border-b border-dashed text-left">{{$task->id}}</td>

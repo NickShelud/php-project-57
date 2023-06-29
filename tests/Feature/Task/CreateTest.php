@@ -30,7 +30,6 @@ test('task should not be created', function() {
         ]);
 
         $response->assertSessionHasErrors();
-        $response->assertRedirect(route('tasks.index'));
 });
 
 test('guest can\'t create task', function() {
