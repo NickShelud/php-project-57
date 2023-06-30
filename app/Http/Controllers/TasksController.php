@@ -8,24 +8,40 @@ use App\Models\TaskStatuses;
 use App\Models\Label;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\QueryBuilder\AllowedFilter;
+use Spatie\QueryBuilder\QueryBuilder;
 
 class TasksController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $users = User::all();
-        $tasks = Tasks::select('tasks.*', 'users.name as author', 'task_statuses.name as status', 'users.name as performer')
-            ->join('users', 'tasks.created_by_id', '=', 'users.id')
-            ->join('task_statuses', 'tasks.status_id', '=', 'task_statuses.id')
-            ->leftjoin('users as performers', 'tasks.assigned_to_id', '=', 'performers.id')
+        // $tasks = Tasks::select('tasks.*', 'users.name as author', 'task_statuses.name as status', 'users.name as performer')
+        //     ->join('users', 'tasks.created_by_id', '=', 'users.id')
+        //     ->join('task_statuses', 'tasks.status_id', '=', 'task_statuses.id')
+        //     ->leftjoin('users as performers', 'tasks.assigned_to_id', '=', 'performers.id')
+        //     ->paginate(15);
+
+        $tasks = QueryBuilder::for(Tasks::class)
+            ->allowedFilters(
+                [
+                    AllowedFilter::exact('status_id'),
+                    AllowedFilter::exact('created_by_id'),
+                    AllowedFilter::exact('assigned_to_id')
+                ]
+            )
             ->paginate(15);
-        
+
+        $users = User::pluck('name', 'id');
+        $statuses = TaskStatuses::pluck('name', 'id');
+
+        $filter = $request->filter ?? null;
 
 
-        return view('task.index', compact('tasks'));
+        return view('task.index', compact('tasks', 'users', 'statuses', 'filter'));
     }
 
     /**

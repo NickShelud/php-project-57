@@ -91,7 +91,7 @@ class LabelController extends Controller
             'description' => 'nullable'
         ]);
 
-        $label = Label::findOrFail($label->id);
+        //$label = Label::findOrFail($label->id);
 
         if($data) {
             flash(__('trans.flash.labelUpdate'))->success();

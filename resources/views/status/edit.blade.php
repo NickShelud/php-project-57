@@ -3,7 +3,7 @@
 @section('content')
 <br>
 <br>
-{{ Form::model($status, ['route' => ['task_statuses.update', $taskStatuses], 'method' => 'PATCH']) }}
+{{ Form::model($taskStatus, ['route' => ['task_statuses.update', $taskStatus->id], 'method' => 'PATCH']) }}
     @include('status.form')
     <div>
         <ul>

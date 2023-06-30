@@ -70,36 +70,36 @@ class TaskStatusesController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(TaskStatuses $taskStatuses)
+    public function edit(TaskStatuses $taskStatus)
     {
         if (Auth::user() === null) {
             abort(403);
         }
         
-        return view('status.edit', compact('taskStatuses'));
+        return view('status.edit', compact('taskStatus'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskStatuses $taskStatuses)
+    public function update(Request $request, TaskStatuses $taskStatus)
     {
         if (Auth::user() === null) {
             abort(403);
         }
 
         $data = $this->validate($request, [
-            'name' => 'required|unique:task_statuses,name'. $taskStatuses->id,
+            'name' => 'required|unique:task_statuses,name',
         ]);
 
         if($data) {
             flash(__('trans.flash.statusUpdate'))->success();
         } else {
-            flash('Not update')->error();
+            flash(__('trans.flash.statusNotUpdate'))->error();
         }
         
-        $taskStatuses->fill($data);
-        $taskStatuses->save();
+        $taskStatus->fill($data);
+        $taskStatus->save();
 
         return redirect()->route('task_statuses.index');
     }
@@ -107,20 +107,20 @@ class TaskStatusesController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(TaskStatuses $taskStatuses)
+    public function destroy(TaskStatuses $taskStatus)
     {
         if (Auth::user() === null) {
             abort(403);
         }
 
-        $taskStatusId = Tasks::where('status_id', $taskStatuses->status_id)->exists();
+        $task = Tasks::where('status_id', $taskStatus->id)->exists();
 
-        if ($taskStatusId) {
+        if ($task) {
             flash(__('trans.flash.statusNotDelete'))->error();
             return redirect()->route('task_statuses.index');
         }
         
-        $taskStatuses->delete();
+        $taskStatus->delete();
         flash(__('trans.flash.statusDelete'))->success();
 
         return redirect()->route('task_statuses.index');

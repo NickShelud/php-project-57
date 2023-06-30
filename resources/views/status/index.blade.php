@@ -25,18 +25,15 @@
         <td class="border-b border-dashed text-left">{{$status->name}}</td>
         <td class="border-b border-dashed text-left">{{$status->created_at}}</td>
         <td class="border-b border-dashed text-left">
-            @auth
-            <a href="{{ route('task_statuses.edit', ['task_status'=>$status->id]) }}">{{__('trans.edit')}}</a>
-            @endauth
-
-        @auth
+    @auth
+        <a href="{{ route('task_statuses.edit', ['task_status'=>$status->id]) }}">{{__('trans.edit')}}</a>
         <a href="{{ route('task_statuses.destroy', ['task_status'=>$status->id]) }}" 
             data-confirm="Вы уверены?" 
             data-method="delete" 
             rel="nofollow">
                 {{__('trans.delete')}}
         </a>
-        @endauth
+    @endauth
     </td>
     </tr>
 
