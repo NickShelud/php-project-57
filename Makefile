@@ -15,8 +15,3 @@ validate:
 
 refresh:
 	php artisan migrate:refresh --seed
-
-commit:
-	git add -A
-	git commit -m 'fix bugs'
-	git push -u origin main
