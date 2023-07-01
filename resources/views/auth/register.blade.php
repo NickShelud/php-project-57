@@ -45,7 +45,7 @@
             </a>
 
             <x-primary-button class="ml-4">
-                {{ __('trans.registration') }}
+                {{ __('Зарегистрировать') }}
             </x-primary-button>
         </div>
     </form>
