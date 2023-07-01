@@ -26,7 +26,7 @@
                 <div class="flex lg:order-2">
                 @guest
                     <button><a href="{{route('login')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('trans.nav.login')}}</a></button>
-                    <button><a href="{{route('register')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">{{__('trans.nav.registration')}}</a></button>
+                    <button name='registration'><a href="{{route('register')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">{{__('trans.nav.registration')}}</a></button>
                 @endguest
                 @auth
                     <button><a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('trans.nav.logout')}}</a></button>
