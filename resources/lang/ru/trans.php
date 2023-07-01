@@ -63,5 +63,9 @@
         'hello' => 'Привет от Хекслета!',
         'descriptionProject' => 'Это простой менеджер задач на Laravel',
         'clickMe' => 'Нажми меня!',
-        'submit' => 'Применить'
+        'submit' => 'Применить',
+        'password' => 'Пароль',
+        'confirmPassword' => 'Подтверждение',
+        'alreadyRegister' => 'Уже зарегистрированы?',
+        'registration' => 'Зарегистрировать'
     ];
