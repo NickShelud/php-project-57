@@ -8,7 +8,7 @@ start:
 	php artisan serve
 
 install:
-	composer install
+	composer install --ignore-platform-reqs
 
 validate:
 	composer validate
