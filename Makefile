@@ -8,10 +8,13 @@ start:
 	php artisan serve
 
 install:
-	composer install --ignore-platform-reqs
+	composer install
 
 validate:
 	composer validate
 
 refresh:
 	php artisan migrate:refresh --seed
+
+restart:
+	sudo service postgresql restart

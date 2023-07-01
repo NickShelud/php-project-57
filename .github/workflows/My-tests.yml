@@ -10,10 +10,12 @@ jobs:
     - name: Setup PHP
       uses: shivammathur/setup-php@v2
       with:
-        php-version: '8.0'
+        php-version: '8.2'
     - name: Run install
       run: make install
     - name: Run linter
       run: make lint
+    - name: Run database
+      run: make restart
     - name: Run test
       run: make test
