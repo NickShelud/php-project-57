@@ -19,11 +19,6 @@ class TasksController extends Controller
     public function index(Request $request)
     {
         $users = User::all();
-        // $tasks = Tasks::select('tasks.*', 'users.name as author', 'task_statuses.name as status', 'users.name as performer')
-        //     ->join('users', 'tasks.created_by_id', '=', 'users.id')
-        //     ->join('task_statuses', 'tasks.status_id', '=', 'task_statuses.id')
-        //     ->leftjoin('users as performers', 'tasks.assigned_to_id', '=', 'performers.id')
-        //     ->paginate(15);
 
         $tasks = QueryBuilder::for(Tasks::class)
             ->allowedFilters(
