@@ -17,5 +17,3 @@ jobs:
       run: make lint
     - name: Run database
       run: make restart
-    - name: Run npm
-      run: make npm
