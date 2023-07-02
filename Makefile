@@ -24,3 +24,6 @@ migrate:
 
 seed:
 	php artisan db:seed
+
+npm:
+	npm run dev

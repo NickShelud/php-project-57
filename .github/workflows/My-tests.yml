@@ -17,7 +17,5 @@ jobs:
       run: make lint
     - name: Run database
       run: make restart
-    - name: Run server
-      run: make start
     - name: Run test
       run: make test
