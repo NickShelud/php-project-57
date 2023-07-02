@@ -41,12 +41,13 @@ class TasksController extends Controller
 
     /**
      * Show the form for creating a new resource.
-     */
+    */
     public function create()
     {
         if (Auth::user() === null) {
             abort(403);
         }
+
         $tasks = new Tasks();
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
@@ -64,7 +65,7 @@ class TasksController extends Controller
             abort(403);
         }
         $user = User::find(Auth::id())->name;
-        
+
         $data = $this->validate($request, [
             'name' => 'required',
             'status_id' => 'required',
@@ -73,7 +74,7 @@ class TasksController extends Controller
             'label_id' => 'nullable'
         ]);
 
-        if($data) {
+        if ($data) {
             flash(__('trans.flash.taskCreate'))->success();
         } else {
             flash(__('trans.flash.taskNotCreate'))->error();

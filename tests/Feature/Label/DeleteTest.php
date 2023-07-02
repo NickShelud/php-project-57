@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-test('label should be delete', function() {
+test('label should be delete', function () {
     $user = User::factory()->create();
     $label = Label::factory()->create();
 
@@ -19,7 +19,7 @@ test('label should be delete', function() {
     $response->assertRedirect(route('labels.index'));
 });
 
-test('label should not be delete', function() {
+test('label should not be delete', function () {
     $label = Label::factory()->create();
 
     $response = $this
@@ -28,7 +28,7 @@ test('label should not be delete', function() {
     $response->assertStatus(403);
 });
 
-test('test should not be delete if it is used in task', function() {
+test('test should not be delete if it is used in task', function () {
     $user = User::factory()->create();
     $label = Label::factory()->create();
     $task = Tasks::factory()->create(['label_id' => $label->id]);

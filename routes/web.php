@@ -35,4 +35,4 @@ Route::resource('task_statuses', TaskStatusesController::class);
 Route::resource('tasks', TasksController::class);
 Route::resource('labels', LabelController::class);
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

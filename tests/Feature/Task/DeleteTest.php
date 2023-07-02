@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-test('task should be delete', function() {
+test('task should be delete', function () {
     $user = User::factory()->create();
     $task = Tasks::factory()->create(['created_by_id' => $user->id]);
 
@@ -18,7 +18,7 @@ test('task should be delete', function() {
         $response->assertRedirect(route('tasks.index'));
 });
 
-test('task should not be delete', function() {
+test('task should not be delete', function () {
     $task = Tasks::factory()->create();
 
     $response = $this->delete(route('tasks.destroy', ['task' => $task->id]));

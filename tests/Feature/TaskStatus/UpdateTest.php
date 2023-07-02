@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-test('should be update for user', function() {
+test('should be update for user', function () {
     $user = User::factory()->create();
     $taskStatus = TaskStatuses::factory()->create();
 
@@ -17,14 +17,14 @@ test('should be update for user', function() {
     $response->assertOk();
 });
 
-test('should not be update for guests', function() {
+test('should not be update for guests', function () {
     $taskStatus = TaskStatuses::factory()->create();
     $response = $this->patch(route('task_statuses.update', ['task_status' => $taskStatus->id]));
 
     $response->assertStatus(403);
 });
 
-test('should be update new status', function() {
+test('should be update new status', function () {
     $user = User::factory()->create();
     $taskStatus = TaskStatuses::factory()->create();
 

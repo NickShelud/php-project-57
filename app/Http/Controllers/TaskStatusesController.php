@@ -41,12 +41,12 @@ class TaskStatusesController extends Controller
         if (Auth::user() === null) {
             abort(403);
         }
-        
+
         $data = $this->validate($request, [
             'name' => 'required|unique:task_statuses'
         ]);
 
-        if($data) {
+        if ($data) {
             flash(__('trans.flash.statusCreate'))->success();
         } else {
             flash('Not create')->error();
@@ -75,7 +75,7 @@ class TaskStatusesController extends Controller
         if (Auth::user() === null) {
             abort(403);
         }
-        
+
         return view('status.edit', compact('taskStatus'));
     }
 
@@ -92,12 +92,12 @@ class TaskStatusesController extends Controller
             'name' => 'required|unique:task_statuses,name',
         ]);
 
-        if($data) {
+        if ($data) {
             flash(__('trans.flash.statusUpdate'))->success();
         } else {
             flash(__('trans.flash.statusNotUpdate'))->error();
         }
-        
+
         $taskStatus->fill($data);
         $taskStatus->save();
 
@@ -119,7 +119,7 @@ class TaskStatusesController extends Controller
             flash(__('trans.flash.statusNotDelete'))->error();
             return redirect()->route('task_statuses.index');
         }
-        
+
         $taskStatus->delete();
         flash(__('trans.flash.statusDelete'))->success();
 

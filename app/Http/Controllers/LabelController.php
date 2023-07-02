@@ -46,7 +46,7 @@ class LabelController extends Controller
             'description' => 'nullable'
         ]);
 
-        if($data) {
+        if ($data) {
             flash(__('trans.flash.labelCreate'))->success();
         } else {
             flash(__('trans.flash.labelNotCreate'))->error();
@@ -93,12 +93,12 @@ class LabelController extends Controller
 
         //$label = Label::findOrFail($label->id);
 
-        if($data) {
+        if ($data) {
             flash(__('trans.flash.labelUpdate'))->success();
         } else {
             flash(__('trans.flash.labelNotUpdate'))->error();
         }
-        
+
         $label->fill($data);
         $label->save();
 
@@ -115,7 +115,7 @@ class LabelController extends Controller
         }
         $task = Tasks::where('label_id', $label->id)->exists();
 
-        if(!$task and $label) {
+        if (!$task and $label) {
             $label->delete();
             flash(__('trans.flash.labelDelete'))->success();
         } else {

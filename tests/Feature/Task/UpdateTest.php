@@ -7,7 +7,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-test('task should be update', function() {
+test('task should be update', function () {
     $user = User::factory()->create();
     $tasks = Tasks::factory()->create();
     $status = TaskStatuses::factory()->create();
@@ -24,7 +24,7 @@ test('task should be update', function() {
         $response->assertRedirect(route('tasks.index'));
 });
 
-test('task should not be update', function() {
+test('task should not be update', function () {
     $user = User::factory()->create();
     $tasks = Tasks::factory()->create();
     $status = TaskStatuses::factory()->create();
@@ -38,7 +38,7 @@ test('task should not be update', function() {
     $response->assertStatus(403);
 });
 
-test('guest can\'t edit task', function() {
+test('guest can\'t edit task', function () {
     $tasks = Tasks::factory()->create();
     $response = $this->get(route('tasks.edit', ['task' => $tasks->id]));
 

@@ -6,7 +6,7 @@ use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-test('task should be created', function() {
+test('task should be created', function () {
     $user = User::factory()->create();
 
     $response = $this
@@ -20,7 +20,7 @@ test('task should be created', function() {
         $response->assertRedirect(route('tasks.index'));
 });
 
-test('task should not be created', function() {
+test('task should not be created', function () {
     $user = User::factory()->create();
 
     $response = $this
@@ -32,7 +32,7 @@ test('task should not be created', function() {
         $response->assertSessionHasErrors();
 });
 
-test('guest can\'t create task', function() {
+test('guest can\'t create task', function () {
     $response = $this->get(route('tasks.create'));
 
     $response->assertStatus(403);

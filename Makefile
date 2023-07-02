@@ -1,5 +1,5 @@
 lint:
-	composer exec --verbose phpcs -- --standard=PSR12 app/Http/Controllers
+	composer exec --verbose phpcs -- --standard=PSR12 app/Http/Controllers routes tests
 
 test:
 	php artisan test
