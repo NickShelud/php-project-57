@@ -27,3 +27,6 @@ seed:
 
 npm:
 	npm run dev
+
+test-coverage:
+	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
