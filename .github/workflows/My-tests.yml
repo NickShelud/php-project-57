@@ -17,10 +17,6 @@ jobs:
       run: make lint
     - name: Run database
       run: make restart
-    - name: Run migrate
-      run: make migrate
-    - name: Run seed
-      run: make seed
     - name: Run server
       run: make start
     - name: Run test
