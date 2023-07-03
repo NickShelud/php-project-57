@@ -16,7 +16,7 @@
 <body>
     <nav class="">
         <div class="bg-gray-800 border-gray-200 py-2.5 dark:bg-gray-900 shadow-md">
-            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-autor pt-6 pb-6">
+            <div class="flex flex-wrap items-center justify-between max-w-screen-xl px-4 mx-autor">
                 <a href="/" class="flex text-gray-300">{{__('trans.nav.name')}}</a>
                 <div class="items-center justify-between lg:flex lg:w-auto lg:order-1">
                         <a href="{{ route('tasks.index') }}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">{{__('trans.nav.tasks')}}</a>

@@ -97,7 +97,6 @@ class TasksController extends Controller
         $tasks = Tasks::findOrFail($tasks);
         $status = TaskStatuses::statusNameById($tasks->status_id)->all();
         $label = Label::labelNameById($tasks->label_id)->all();
-        var_dump($label);
 
         return view('task.show', compact('tasks', 'status', 'label'));
     }

@@ -44,9 +44,9 @@
                 {{ __('Уже зарегистрированы?') }}
             </a>
 
-            <x-primary-button class="ml-4">
+            <button type="submit" class="ml-4">
                 {{ __('Зарегистрировать') }}
-            </x-primary-button>
+            </button>
         </div>
     </form>
 </x-guest-layout>

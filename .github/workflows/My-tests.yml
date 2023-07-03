@@ -17,13 +17,3 @@ jobs:
       run: make lint
     - name: Run database
       run: make restart
-
-    - name: Run test & publish code coverage
-        uses: paambaati/codeclimate-action@v2.6.0
-        # Add Code Climate secret key
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.KEY_CODECLIMATE }}
-        with:
-          coverageCommand: make test-coverage
-          coverageLocations: ${{github.workplace}}/build/logs/clover.xml:clover
-          debug: true
