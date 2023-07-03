@@ -30,11 +30,13 @@
                 @endguest
                 @auth
 
-                <a href="https://php-task-manager-ru.hexlet.app/logout" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">
-                                Выход
-                            </a>
-                
+                {{Form::open(['route' => 'logout', 
+                                'method' => 'POST', 
+                                'class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded',
+                                'onclick' => "event.preventDefault()"
+                                ])}}
+                    {{Form::submit(__('trans.nav.logout'))}}
+                {{Form::close()}}
                     
                 @endauth
                 </div>
