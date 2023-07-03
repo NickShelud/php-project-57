@@ -29,7 +29,11 @@
                     <button name='registration'><a href="{{route('register')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">{{__('trans.nav.registration')}}</a></button>
                 @endguest
                 @auth
-                    <button><a href="/" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">{{__('trans.nav.logout')}}</a></button>
+
+                {{Form::open(['route' => 'logout', 'method' => 'POST', 'class' => 'bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded'])}}
+                    {{Form::submit(__('trans.nav.logout'))}}
+                {{Form::close()}}
+                    
                 @endauth
                 </div>
             </div>
