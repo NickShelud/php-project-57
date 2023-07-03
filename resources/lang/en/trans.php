@@ -2,4 +2,4 @@
 
 return [
     'exit' => 'exit'
-]
+];
