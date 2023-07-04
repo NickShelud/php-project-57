@@ -39,9 +39,9 @@
                 </a>
             @endif
 
-            <x-primary-button class="ml-3">
+            <button type="submit" class="ml-4">
                 {{ __('trans.nav.login') }}
-            </x-primary-button>
+            </button>
         </div>
     </form>
 </x-guest-layout>
