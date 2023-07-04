@@ -6,6 +6,7 @@ return [
     'min' => [
         'string' => ':attribute должен иметь длину не менее :min символов.',
     ],
+    'confirmed' => 'Пароль и подтверждение не совпадают',
     'attributes' => [
         'password' => 'Пароль',
         'status' => 'Статус',
