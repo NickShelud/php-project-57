@@ -7,7 +7,7 @@
 @include('flash::message')
 
     @auth
-    <a href="{{route('task_statuses.create')}}">{{__('trans.create')}}</a>
+    <a href="{{route('task_statuses.create')}}" onclick="event.preventDefault();">{{__('trans.create')}}</a>
     @endauth
     <div class="grid col-span-full">
         <h1 class="mb-5 flex grow h-14">{{__('trans.nav.statuses')}}</h1>
