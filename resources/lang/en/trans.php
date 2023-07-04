@@ -1,5 +1,5 @@
 <?php
 
 return [
-    'exit' => 'exit'
+    'logout' => 'exit'
 ];
