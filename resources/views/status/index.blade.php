@@ -7,13 +7,15 @@
 @include('flash::message')
 
     @auth
-    <a href="{{route('task_statuses.create')}}" 
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" 
-        onclick="event.preventDefault(); document.getElementById('create-form').submit();">{{__('trans.create')}}</a>
+        <div>
+        <a href="{{route('task_statuses.create')}}" 
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" 
+                onclick="event.preventDefault(); document.getElementById('create-form').submit();">{{__('trans.taskStatus.create')}}</a>
 
-    <form id="create-form" action="{{route('task_statuses.create')}}" method="GET" style="display: none;">
-        @csrf
-    </form>    
+            <form id="create-form" action="{{route('task_statuses.create')}}" method="GET" style="display: none;">
+                @csrf
+            </form>    
+        </div>
     @endauth
     <div class="grid col-span-full">
         <h1 class="mb-5 flex grow h-14">{{__('trans.nav.statuses')}}</h1>
