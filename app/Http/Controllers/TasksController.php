@@ -95,10 +95,8 @@ class TasksController extends Controller
     public function show($tasks)
     {
         $tasks = Tasks::findOrFail($tasks);
-        $status = TaskStatuses::statusNameById($tasks->status_id)->all();
-        $label = Label::labelNameById($tasks->label_id)->all();
 
-        return view('task.show', compact('tasks', 'status', 'label'));
+        return view('task.show', compact('tasks'));
     }
 
     /**
@@ -135,6 +133,12 @@ class TasksController extends Controller
             'assigned_to_id' => 'nullable',
             'label_id' => 'nullable'
         ]);
+
+        if ($data) {
+            flash(__('trans.flash.taskUpdate'))->success();
+        } else {
+            flash(__('trans.flash.tasklNotUpdate'))->error();
+        }
 
         $task->fill($data);
         $task->save();

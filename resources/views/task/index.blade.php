@@ -15,7 +15,9 @@
     @endauth
 
     <div class="grid col-span-full">
+        <div>
         <h1 class="mb-5 flex grow h-14">{{__('trans.nav.tasks')}}</h1>
+        </div>
 
     @include('task.sortForm')
     <table class="mt-4">
