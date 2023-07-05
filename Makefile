@@ -30,3 +30,6 @@ npm:
 
 test-coverage:
 	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
+
+stan:
+	vendor/bin/phpstan analyse app tests 
