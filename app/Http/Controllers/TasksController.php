@@ -67,7 +67,7 @@ class TasksController extends Controller
         $user = User::find(Auth::id())->name;
 
         $data = $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique:tasks,name',
             'status_id' => 'required',
             'description' => 'nullable',
             'assigned_to_id' => 'nullable',
@@ -127,7 +127,7 @@ class TasksController extends Controller
         $task = Tasks::findOrFail($tasks);
 
         $data = $this->validate($request, [
-            'name' => 'required',
+            'name' => 'required|unique:tasks,name',
             'status_id' => 'required',
             'description' => 'nullable',
             'assigned_to_id' => 'nullable',
