@@ -6,7 +6,7 @@
     <div>
         <a href="{{route('labels.create')}}" 
                 class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" 
-                onclick="event.preventDefault(); document.getElementById('create-form').submit();">{{__('trans.create')}}</a>
+                onclick="event.preventDefault(); document.getElementById('create-form').submit();">{{__('trans.label.create')}}</a>
 
             <form id="create-form" action="{{route('labels.create')}}" method="GET" style="display: none;">
                 @csrf
