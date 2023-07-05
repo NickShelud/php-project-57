@@ -16,7 +16,7 @@
 
     <div class="grid col-span-full">
         <div>
-            <h1 class="mb-5 flex grow h-14">{{__('trans.nav.tasks')}}</h1>
+            <h1 class="mb-5 text-5xl max-w-screen-xl">{{__('trans.nav.tasks')}}</h1>
         </div>
 
     @include('task.sortForm')

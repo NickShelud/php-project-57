@@ -7,7 +7,7 @@
 {{ Form::textarea('description')}}
 {{ Form::label('status_id', __('trans.task.status')), ['class' => 'mt-2'] }}
 {{ Form::select('status_id', $statuses, $tasks->status_id, ['placeholder' => "----------"]) }}
-@if ($errors->has('name'))
+@if ($errors->has('status_id'))
     <div class="alert-danger">{{ $errors->first('status_id') }}</div>
 @endif
 {{ Form::label('assigned_to_id', __('trans.task.performer')), ['class' => 'mt-2'] }}
