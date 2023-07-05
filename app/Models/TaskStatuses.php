@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
-
 class TaskStatuses extends Model
 {
-    protected $fillable = ['name'];
     use HasFactory;
+
+    protected $fillable = ['name'];
 
     public function creator(): BelongsTo
     {
