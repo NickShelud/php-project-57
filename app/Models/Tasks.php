@@ -27,8 +27,8 @@ class Tasks extends Model
         return $this->belongsTo(TaskStatuses::class);
     }
 
-    public function label(): hasOne
+    public function label(): BelongsTo
     {
-        return $this->hasOne(Label::class);    
+        return $this->BelongsTo(Label::class);    
     }
 }
