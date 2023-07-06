@@ -19,3 +19,4 @@ jobs:
       run: make restart
     - name: Run front
       run: npm i
+      run: npm vite build
