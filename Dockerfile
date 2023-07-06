@@ -49,7 +49,7 @@ RUN mkdir /app
 RUN mkdir -p  /app
 WORKDIR /app
 COPY . .
-COPY package.json .
+COPY --from=base /var/www/html/vendor /app/vendor
 
 # Use yarn or npm depending on what type of
 # lock file we might find. Defaults to
