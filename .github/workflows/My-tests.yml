@@ -17,7 +17,9 @@ jobs:
       run: make lint
     - name: Run database
       run: make restart
+    - name: Run install npm
+      run: npm install
     - name: Run front
-      run: npm i
+      run: npm run dev
     - name: Run build
       run: npm vite build
