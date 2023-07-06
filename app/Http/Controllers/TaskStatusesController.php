@@ -46,11 +46,7 @@ class TaskStatusesController extends Controller
             'name' => 'required|unique:task_statuses'
         ]);
 
-        if ($data) {
-            flash(__('trans.flash.statusCreate'))->success();
-        } else {
-            flash('Not create')->error();
-        }
+        flash(__('trans.flash.statusCreate'))->success();
 
         $status = new TaskStatuses();
         $status->fill($data);
@@ -92,11 +88,7 @@ class TaskStatusesController extends Controller
             'name' => 'required|unique:task_statuses,name',
         ]);
 
-        if ($data) {
-            flash(__('trans.flash.statusUpdate'))->success();
-        } else {
-            flash(__('trans.flash.statusNotUpdate'))->error();
-        }
+        flash(__('trans.flash.statusUpdate'))->success();
 
         $taskStatus->fill($data);
         $taskStatus->save();

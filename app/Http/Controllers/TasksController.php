@@ -64,7 +64,6 @@ class TasksController extends Controller
         if (Auth::user() === null) {
             abort(403);
         }
-        $user = User::find(Auth::id())->name;
 
         $data = $this->validate($request, [
             'name' => 'required|unique:tasks,name',
@@ -74,11 +73,7 @@ class TasksController extends Controller
             'label_id' => 'nullable'
         ]);
 
-        if ($data) {
-            flash(__('trans.flash.taskCreate'))->success();
-        } else {
-            flash(__('trans.flash.taskNotCreate'))->error();
-        }
+        flash(__('trans.flash.taskCreate'))->success();
 
         $data['created_by_id'] = Auth::id();
 
@@ -92,10 +87,8 @@ class TasksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show($tasks)
+    public function show(Tasks $tasks)
     {
-        $tasks = Tasks::findOrFail($tasks);
-
         return view('task.show', compact('tasks'));
     }
 

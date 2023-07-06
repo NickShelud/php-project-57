@@ -46,11 +46,7 @@ class LabelController extends Controller
             'description' => 'nullable'
         ]);
 
-        if (!empty($data)) {
-            flash(__('trans.flash.labelCreate'))->success();
-        } else {
-            flash(__('trans.flash.labelNotCreate'))->error();
-        }
+        flash(__('trans.flash.labelCreate'))->success();
 
         $label = new Label();
         $label->fill($data);
@@ -91,13 +87,7 @@ class LabelController extends Controller
             'description' => 'nullable'
         ]);
 
-        //$label = Label::findOrFail($label->id);
-
-        if (!empty($data)) {
-            flash(__('trans.flash.labelUpdate'))->success();
-        } else {
-            flash(__('trans.flash.labelNotUpdate'))->error();
-        }
+        flash(__('trans.flash.labelUpdate'))->success();
 
         $label->fill($data);
         $label->save();
