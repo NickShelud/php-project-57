@@ -1,23 +1,33 @@
 {
-    "private": true,
-    "type": "module",
-    "scripts": {
-        "dev": "vite",
-        "build": "vite build"
-    },
-    "devDependencies": {
-        "@tailwindcss/forms": "^0.5.2",
-        "alpinejs": "^3.4.2",
-        "autoprefixer": "^10.4.2",
-        "axios": "^1.1.2",
-        "laravel-vite-plugin": "^0.7.5",
-        "postcss": "^8.4.6",
-        "tailwindcss": "^3.3.2",
-        "vite": "^4.0.0"
-    },
-    "dependencies": {
-        "@rails/ujs": "^7.0.5",
-        "npm": "^9.7.2",
-        "update": "^0.7.4"
-    }
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.2",
+    "alpinejs": "^3.4.2",
+    "autoprefixer": "^10.4.2",
+    "axios": "^1.1.2",
+    "laravel-vite-plugin": "^0.7.5",
+    "postcss": "^8.4.6",
+    "tailwindcss": "^3.3.2",
+    "vite": "^4.0.0"
+  },
+  "dependencies": {
+    "@rails/ujs": "^7.0.5",
+    "npm": "^9.7.2",
+    "update": "^0.7.4"
+  },
+  "name": "php-project-57",
+  "description": "[![hexlet-check](https://github.com/NickShelud/php-project-57/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/NickShelud/php-project-57/actions/workflows/hexlet-check.yml) [![Maintainability](https://api.codeclimate.com/v1/badges/f37cf5a5f2af5ba68991/maintainability)](https://codeclimate.com/github/NickShelud/php-project-57/maintainability) [![my-tests](https://github.com/NickShelud/php-project-57/actions/workflows/My-tests.yml/badge.svg)](https://github.com/NickShelud/php-project-57/actions/workflows/My-tests.yml) <p align=\"center\"><a href=\"https://laravel.com\" target=\"_blank\"><img src=\"https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg\" width=\"400\" alt=\"Laravel Logo\"></a></p>",
+  "version": "1.0.0",
+  "main": "postcss.config.js",
+  "directories": {
+    "test": "tests"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
