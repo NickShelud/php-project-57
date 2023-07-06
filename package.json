@@ -16,7 +16,7 @@
     "vite": "^4.0.0"
   },
   "dependencies": {
-    "@rails/ujs": "^7.0.5",
+    "@rails/ujs": "^7.0.6",
     "npm": "^9.7.2",
     "rails-ujs": "^5.2.8-1",
     "turbolinks": "^5.2.0",
