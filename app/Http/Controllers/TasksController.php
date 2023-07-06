@@ -89,6 +89,7 @@ class TasksController extends Controller
      */
     public function show(Tasks $tasks)
     {
+        var_dump($tasks);
         return view('task.show', compact('tasks'));
     }
 
@@ -112,7 +113,7 @@ class TasksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, $tasks)
+    public function update(Request $request, Task $tasks)
     {
         if (Auth::user() === null) {
             abort(403);
@@ -127,11 +128,7 @@ class TasksController extends Controller
             'label_id' => 'nullable'
         ]);
 
-        if ($data) {
-            flash(__('trans.flash.taskUpdate'))->success();
-        } else {
-            flash(__('trans.flash.tasklNotUpdate'))->error();
-        }
+        flash(__('trans.flash.taskUpdate'))->success();
 
         $task->fill($data);
         $task->save();
@@ -142,12 +139,12 @@ class TasksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy($tasks)
+    public function destroy(Tasks $tasks)
     {
         if (Auth::user() === null) {
             abort(403);
         }
-        $task = Tasks::find($tasks);
+        $task = Tasks::find($tasks->id);
 
         if ($task) {
             $task->delete();

@@ -4,7 +4,7 @@
 
 <div class="grid col-span-full">
     <h2 class="mb-5">
-        {{__('trans.task.viewTask')}}: {{$tasks->name}}        <a href="{{ route('tasks.edit', ['task' => $tasks->id]) }}">⚙</a>
+        {{__('trans.task.viewTask')}}: {{$tasks->name}}        <a href="{{ route('tasks.edit', ['task' => $tasks]) }}">⚙</a>
         </h2>
         <p><span class="font-black">{{__('trans.name')}}:</span> {{ $tasks->name }}</p>
         <p><span class="font-black">{{__('trans.task.status')}}:</span> {{ $tasks->status->name }}</p>

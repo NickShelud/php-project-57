@@ -17,3 +17,5 @@ jobs:
       run: make lint
     - name: Run database
       run: make restart
+    - name: Run front
+      run: npm run dev
