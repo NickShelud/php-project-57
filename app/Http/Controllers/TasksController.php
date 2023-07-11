@@ -48,12 +48,12 @@ class TasksController extends Controller
             abort(403);
         }
 
-        $tasks = new Tasks();
+        $task = new Tasks();
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
         $labels = Label::pluck('name', 'id');
 
-        return view('task.create', compact('tasks', 'statuses', 'users', 'labels'));
+        return view('task.create', compact('task', 'statuses', 'users', 'labels'));
     }
 
     /**
@@ -87,38 +87,35 @@ class TasksController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Tasks $tasks)
+    public function show(Tasks $task)
     {
-        var_dump($tasks);
-        return view('task.show', compact('tasks'));
+        return view('task.show', compact('task'));
     }
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit($tasks)
+    public function edit(Tasks $task)
     {
         if (Auth::user() === null) {
             abort(403);
         }
-        $tasks = Tasks::findOrFail($tasks);
-
+        
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
         $labels = Label::pluck('name', 'id');
 
-        return view('task.edit', compact('tasks', 'statuses', 'users', 'labels'));
+        return view('task.edit', compact('task', 'statuses', 'users', 'labels'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Task $tasks)
+    public function update(Request $request, Tasks $task)
     {
         if (Auth::user() === null) {
             abort(403);
         }
-        $task = Tasks::findOrFail($tasks);
 
         $data = $this->validate($request, [
             'name' => 'required|unique:tasks,name',

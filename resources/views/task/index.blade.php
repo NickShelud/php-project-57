@@ -35,7 +35,7 @@
     <tr>
         <td class="border-b border-dashed text-left">{{$task->id}}</td>
         <td class="border-b border-dashed text-left">{{$task->status->name}}</td>
-        <td class="border-b border-dashed text-left"><a href="{{ route('tasks.show', $task) }}">{{$task->name}}</a></td>
+        <td class="border-b border-dashed text-left"><a href="{{ route('tasks.show', $task->id) }}">{{$task->name}}</a></td>
         <td class="border-b border-dashed text-left">{{$task->creator->name}}</td>
         <td class="border-b border-dashed text-left">{{$task->performer->name}}</td>
         <td class="border-b border-dashed text-left">{{$task->created_at->format('d.m.Y')}}</td>
