@@ -100,7 +100,7 @@ class TasksController extends Controller
         if (Auth::user() === null) {
             abort(403);
         }
-        
+
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
         $labels = Label::pluck('name', 'id');
@@ -136,19 +136,13 @@ class TasksController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Tasks $tasks)
+    public function destroy(Tasks $task)
     {
         if (Auth::user() === null) {
             abort(403);
         }
-        $task = Tasks::find($tasks->id);
-
-        if ($task) {
-            $task->delete();
-            flash(__('trans.flash.taskDelete'))->success();
-        } else {
-            flash(__('trans.flash.taskNotDelete'))->error();
-        }
+        $task->delete();
+        flash(__('trans.flash.taskDelete'))->success();
 
         return redirect()->route('tasks.index');
     }
