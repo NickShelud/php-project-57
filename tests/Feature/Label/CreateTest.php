@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature;
+
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;

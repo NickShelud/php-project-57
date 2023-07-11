@@ -1,5 +1,7 @@
 <?php
 
+namespace Tests\Feature;
+
 use App\Models\User;
 use App\Models\TaskStatuses;
 use App\Providers\RouteServiceProvider;
