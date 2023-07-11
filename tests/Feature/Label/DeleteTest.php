@@ -6,37 +6,44 @@ use App\Models\Tasks;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-test('label should be delete', function () {
-    $user = User::factory()->create();
-    $label = Label::factory()->create();
+class DeleteTest extends TestCase
+{
+    public function testDestroyAuth()
+    {
+        $user = User::factory()->create();
+        $label = Label::factory()->create();
 
-    $response = $this
-        ->actingAs($user)
-        ->delete(route('labels.destroy', ['label' => $label->id]));
+        $response = $this
+            ->actingAs($user)
+            ->delete(route('labels.destroy', ['label' => $label->id]));
 
-    $response->assertSessionHasNoErrors();
-    $response->assertRedirect(route('labels.index'));
-});
+        $response->assertSessionHasNoErrors();
+        $response->assertRedirect(route('labels.index'));
+    }
 
-test('label should not be delete', function () {
-    $label = Label::factory()->create();
+    public function testDestroyNotAuth()
+    {
+        $label = Label::factory()->create();
 
-    $response = $this
-        ->delete(route('labels.destroy', ['label' => $label->id]));
+        $response = $this
+            ->delete(route('labels.destroy', ['label' => $label->id]));
 
-    $response->assertStatus(403);
-});
+        $response->assertStatus(403);
+    }
 
-test('test should not be delete if it is used in task', function () {
-    $user = User::factory()->create();
-    $label = Label::factory()->create();
-    $task = Tasks::factory()->create(['label_id' => $label->id]);
+    public function testDestroyLabelUsedInTask()
+    {
+        $user = User::factory()->create();
+        $label = Label::factory()->create();
+        $task = Tasks::factory()->create(['label_id' => $label->id]);
 
-    $response = $this
-        ->actingAs($user)
-        ->delete(route('labels.destroy', ['label' => $label->id]));
+        $response = $this
+            ->actingAs($user)
+            ->delete(route('labels.destroy', ['label' => $label->id]));
 
-    $this->assertDatabaseHas('tasks', ['label_id' => $label->id]);
-    $response->assertRedirect(route('labels.index'));
-});
+        $this->assertDatabaseHas('tasks', ['label_id' => $label->id]);
+        $response->assertRedirect(route('labels.index'));
+    }
+}
