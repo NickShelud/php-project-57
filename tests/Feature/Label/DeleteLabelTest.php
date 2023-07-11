@@ -10,7 +10,7 @@ use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class DeleteTest extends TestCase
+class DeleteLabelTest extends TestCase
 {
     public function testDestroyAuth()
     {

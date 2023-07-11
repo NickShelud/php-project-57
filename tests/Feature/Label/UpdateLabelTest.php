@@ -7,8 +7,9 @@ use App\Models\Label;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\TestCase;
 
-class UpdateTest extends TestCase
+class UpdateLabelTest extends TestCase
 {
     public function testEditAuth()
     {

@@ -8,7 +8,7 @@ use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class CreateTest extends TestCase
+class CreateLabelTest extends TestCase
 {
     public function testCreateAuth()
     {
@@ -27,7 +27,7 @@ class CreateTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->post(route('labels.store', ['name' => 'testFakeName']));
+            ->post(route('labels.store', ['name' => 'testFakeNameForLabel']));
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect(route('labels.index'));
