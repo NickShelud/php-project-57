@@ -23,7 +23,7 @@ class TaskStatuses extends Model
         return $this->hasMany(Tasks::class);
     }
 
-    public function scopeStatusNameById($query, $id)
+    public function scopeStatusNameById(mixed $query, mixed $id)
     {
         return $query->where('id', $id)->pluck('name');
     }

@@ -13,9 +13,9 @@ class Label extends Model
 
     protected $fillable = ['name', 'description'];
 
-    public function creator(): belongTo
+    public function creator(): belongsTo
     {
-        return $this->belongTo(User::class);
+        return $this->belongsTo(User::class);
     }
 
     public function task(): hasMany
@@ -23,7 +23,7 @@ class Label extends Model
         return $this->hasMany(Tasks::class);
     }
 
-    public function scopeLabelNameById($query, $id)
+    public function scopeLabelNameById(mixed $query, mixed $id)
     {
         return $query->where('id', $id)->pluck('name');
     }

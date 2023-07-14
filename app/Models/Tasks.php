@@ -29,6 +29,6 @@ class Tasks extends Model
 
     public function label(): BelongsTo
     {
-        return $this->BelongsTo(Label::class);
+        return $this->belongsTo(Label::class);
     }
 }
