@@ -4,8 +4,8 @@ lint:
 test:
 	php artisan test
 
-start:
-	php artisan serve
+start-app:
+	php artisan serve --host=0.0.0.0 --port=$(PORT)
 
 install:
 	composer install
