@@ -110,7 +110,6 @@ class LabelController extends Controller
             return back();
         }
 
-        
         $label->delete();
         flash(__('trans.flash.labelDelete'))->success();
 
