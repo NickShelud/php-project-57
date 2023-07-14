@@ -15,12 +15,16 @@ class CreateTaskTest extends TestCase
     {
         $user = User::factory()->create();
 
+        $newTaskData = Tasks::factory()->make()->only([
+            'name',
+            'description',
+            'status_id',
+            'assigned_to_id',
+        ]);
+
         $response = $this
             ->actingAs($user)
-            ->post(route('tasks.store'), [
-                'name' => fake()->name(),
-                'status_id' => 1
-        ]);
+            ->post(route('tasks.store'), $newTaskData);
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect(route('tasks.index'));
