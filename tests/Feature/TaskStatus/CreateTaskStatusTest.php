@@ -34,7 +34,7 @@ class CreateTaskStatusTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->post(route('task_statuses.store'), [
-                'name' => 'newTestStatus'
+                'name' => fake()->name()
         ]);
 
         $response->assertSessionHasNoErrors();

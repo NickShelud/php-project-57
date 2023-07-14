@@ -7,7 +7,6 @@ use App\Models\TaskStatuses;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
 use Tests\TestCase;
 
 class UpdateTaskStatusTest extends TestCase
@@ -40,7 +39,7 @@ class UpdateTaskStatusTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->patch(route('task_statuses.update', ['task_status' => $taskStatus->id]), [
-                'name' => 'test'
+                'name' => fake()->name()
         ]);
 
         $response->assertSessionHasNoErrors();

@@ -7,7 +7,6 @@ use App\Models\TaskStatuses;
 use App\Providers\RouteServiceProvider;
 use App\Http\Controllers\Auth;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
 use Tests\TestCase;
 
 class IndexTaskStatusTest extends TestCase

@@ -30,7 +30,7 @@ class UpdateLabelTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->patch(route('labels.update', ['label' => $label->id, 'name' => 'fakeTestName']));
+            ->patch(route('labels.update', ['label' => $label->id, 'name' => fake()->name()]));
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect(route('labels.index'));

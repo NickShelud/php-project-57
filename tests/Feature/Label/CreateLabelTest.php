@@ -27,7 +27,7 @@ class CreateLabelTest extends TestCase
 
         $response = $this
             ->actingAs($user)
-            ->post(route('labels.store', ['name' => 'testFakeNameForLabel']));
+            ->post(route('labels.store', ['name' => fake()->name()]));
 
         $response->assertSessionHasNoErrors();
         $response->assertRedirect(route('labels.index'));

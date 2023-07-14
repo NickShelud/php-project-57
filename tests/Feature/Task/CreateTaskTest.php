@@ -18,7 +18,7 @@ class CreateTaskTest extends TestCase
         $response = $this
             ->actingAs($user)
             ->post(route('tasks.store'), [
-                'name' => 'newTestTask',
+                'name' => fake()->name(),
                 'status_id' => 1
         ]);
 
