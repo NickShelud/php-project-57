@@ -105,7 +105,7 @@ class LabelController extends Controller
         }
         $task = Tasks::where('label_id', $label->id)->exists();
 
-        if ($label->tasks()->exists()) {
+        if ($label->task()->exists()) {
             flash(__('trans.flash.labelNotDelete'))->error();
             return back();
         }
