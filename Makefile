@@ -20,7 +20,7 @@ restart:
 	sudo service postgresql restart
 
 migrate:
-	php artisan migrate --seed
+	php artisan migrate:fresh --force --seed
 
 seed:
 	php artisan db:seed
