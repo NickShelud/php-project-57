@@ -34,5 +34,4 @@ test-coverage:
 stan:
 	vendor/bin/phpstan analyse app tests
 
-start:
-	migrate start-app
+start: migrate start-app
