@@ -5,7 +5,7 @@
     },
     "deploy": {
       "numReplicas": 1,
-      "startCommand": "make start-app",
+      "startCommand": "make start",
       "restartPolicyType": "ON_FAILURE",
       "restartPolicyMaxRetries": 10,
       "migrate": "php artisan migrate --seed"
