@@ -38,6 +38,5 @@ start:
 	cp -n .env.example .env || true
 	php artisan key:generate
 	php artisan migrate:fresh --force --seed
-	sudo service postgresql restart
 	npm run dev
 	php artisan serve --host=0.0.0.0 --port=$(PORT)
