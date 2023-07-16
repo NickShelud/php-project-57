@@ -35,5 +35,7 @@ stan:
 	vendor/bin/phpstan analyse app tests
 
 start:
+	php artisan key:generate
+	cp -n .env.example .env || true
 	php artisan migrate:fresh --force --seed
 	php artisan serve --host=0.0.0.0 --port=$(PORT)
