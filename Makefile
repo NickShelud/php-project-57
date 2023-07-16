@@ -20,7 +20,7 @@ restart:
 	sudo service postgresql restart
 
 migrate:
-	php artisan migrate
+	php artisan migrate --seed
 
 seed:
 	php artisan db:seed
@@ -32,4 +32,7 @@ test-coverage:
 	composer exec --verbose phpunit tests -- --coverage-clover build/logs/clover.xml
 
 stan:
-	vendor/bin/phpstan analyse app tests 
+	vendor/bin/phpstan analyse app tests
+
+start:
+	migrate start-app
