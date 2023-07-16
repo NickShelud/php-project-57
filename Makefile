@@ -34,4 +34,5 @@ test-coverage:
 stan:
 	vendor/bin/phpstan analyse app tests
 
-start: migrate start-app
+start: migrate
+	php artisan serve --host=0.0.0.0 --port=$(PORT)
