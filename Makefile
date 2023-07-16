@@ -35,4 +35,4 @@ stan:
 	vendor/bin/phpstan analyse app tests
 
 start: migrate
-    php artisan serve --host=0.0.0.0 --port=$(PORT)
+	php artisan serve --host=0.0.0.0 --port=$(PORT)
