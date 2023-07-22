@@ -1,6 +1,6 @@
 @extends('layouts.nav')
 
-@section('content');
+@section('content')
 {{ Form::model($task, ['route' => 'tasks.store']) }}
 <div class="flex flex-col w-50"> 
 <h1 class="mb-5 text-5xl max-w-screen-xl">
