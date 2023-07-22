@@ -66,9 +66,9 @@ class TasksController extends Controller
         }
 
         $data = $this->validate($request, [
-            'name' => 'required|unique:tasks,name',
+            'name' => 'required|max:255|unique:tasks,name',
             'status_id' => 'required',
-            'description' => 'nullable',
+            'description' => 'nullable|max:255',
             'assigned_to_id' => 'nullable',
             'label_id' => 'nullable'
         ]);
@@ -118,9 +118,9 @@ class TasksController extends Controller
         }
 
         $data = $this->validate($request, [
-            'name' => 'required|unique:tasks,name',
+            'name' => 'required|max:255|unique:tasks,name',
             'status_id' => 'required',
-            'description' => 'nullable',
+            'description' => 'nullable|max:255',
             'assigned_to_id' => 'nullable',
             'label_id' => 'nullable'
         ]);

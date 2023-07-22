@@ -42,8 +42,8 @@ class LabelController extends Controller
             abort(403);
         }
         $data = $this->validate($request, [
-            'name' => 'required|unique:labels,name',
-            'description' => 'nullable'
+            'name' => 'required|max:255|unique:labels,name',
+            'description' => 'nullable|max:255'
         ]);
 
         flash(__('trans.flash.labelCreate'))->success();
@@ -83,8 +83,8 @@ class LabelController extends Controller
             abort(403);
         }
         $data = $this->validate($request, [
-            'name' => 'required|unique:labels,name',
-            'description' => 'nullable'
+            'name' => 'required|max:255|unique:labels,name',
+            'description' => 'nullable|max:255'
         ]);
 
         flash(__('trans.flash.labelUpdate'))->success();

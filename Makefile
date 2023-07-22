@@ -10,6 +10,9 @@ start-app:
 install:
 	composer install
 
+install-npm:
+	npm ci
+
 validate:
 	composer validate
 
