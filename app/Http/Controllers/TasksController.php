@@ -81,7 +81,7 @@ class TasksController extends Controller
         $task->fill($data);
         $task->save();
 
-        return redirect()->route('tasks.index');
+        return redirect()->secure(route('tasks.index'));
     }
 
     /**
