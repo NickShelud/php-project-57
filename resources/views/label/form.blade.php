@@ -5,3 +5,6 @@
 @endif
 {{Form::label('description', __('trans.task.description'))}}
 {{Form::textarea('description')}}
+@if ($errors->has('name'))
+    <div class="alert-danger">{{ str_replace('name', __('trans.label.description'), $errors->first('description')) }}</div>
+@endif

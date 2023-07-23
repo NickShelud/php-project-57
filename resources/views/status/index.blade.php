@@ -18,7 +18,9 @@
         </div>
     @endauth
     <div class="grid col-span-full">
-        <h1 class="mb-5 flex grow h-14">{{__('trans.nav.statuses')}}</h1>
+        <div>
+            <h1 class="mb-5 text-5xl max-w-screen-xl">{{__('trans.nav.statuses')}}</h1>
+        </div>
     <table class="mt-4">
         <thead class="border-b-2 border-solid border-black text-left">
         <th>{{__('trans.id')}}</th>

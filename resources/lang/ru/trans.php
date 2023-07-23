@@ -32,7 +32,8 @@
 
         'label' => [
             'create' => 'Создать метку',
-            'label' => 'Метка'
+            'label' => 'Метка',
+            'description' => 'Описание'
         ],
 
         'flash' => [

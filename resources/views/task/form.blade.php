@@ -5,6 +5,9 @@
 @endif
 {{ Form::label('description', __('trans.task.description')), ['class' => 'mt-2'] }}
 {{ Form::textarea('description')}}
+@if ($errors->has('name'))
+    <div class="alert-danger">{{ str_replace('name', __('trans.task.description'), $errors->first('description')) }}</div>
+@endif
 {{ Form::label('status_id', __('trans.task.status')), ['class' => 'mt-2'] }}
 {{ Form::select('status_id', $statuses, $task->status_id, ['placeholder' => "----------"]) }}
 @if ($errors->has('status_id'))
