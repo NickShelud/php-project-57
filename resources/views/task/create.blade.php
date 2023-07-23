@@ -1,7 +1,7 @@
 @extends('layouts.nav')
 
 @section('content')
-{{ Form::model($task, ['route' => 'tasks.store']) }}
+{{ Form::model($task, ['secure_route' => 'tasks.store']) }}
 <div class="flex flex-col w-50"> 
 <h1 class="mb-5 text-5xl max-w-screen-xl">
     {{ __('trans.task.createTask') }}
