@@ -11,6 +11,7 @@ return [
         'password' => 'Пароль',
         'status' => 'Статус',
         'label' => 'Метка',
+        'description' => 'Описание',
     ],
     'max' => [
         'string' => ':attribute не должен иметь длину более :max символов.',
