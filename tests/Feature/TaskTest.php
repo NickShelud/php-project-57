@@ -16,17 +16,15 @@ class TaskTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private $user;
-    private $taskStatus;
-    private $task;
-    private $label;
+    private User $user;
+    private TaskStatuses $taskStatus;
+    private Tasks $tasks;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->user = User::factory()->create();
         $this->taskStatus = TaskStatuses::factory()->create();
-        $this->label = Label::factory()->create();
         $this->tasks = Tasks::factory([
             'created_by_id' => $this->user->id,
         ])->create();
