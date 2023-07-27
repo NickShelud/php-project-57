@@ -62,7 +62,7 @@ class TaskStatusTest extends TestCase
 
     public function testEdit()
     {
-       $taskStatus = TaskStatuses::factory()->create();
+        $taskStatus = TaskStatuses::factory()->create();
 
         $response = $this
             ->actingAs($this->user)
@@ -73,7 +73,7 @@ class TaskStatusTest extends TestCase
 
     public function testUpdate()
     {
-       $taskStatus = TaskStatuses::factory()->create();
+        $taskStatus = TaskStatuses::factory()->create();
 
         $response = $this
             ->actingAs($this->user)
@@ -99,7 +99,7 @@ class TaskStatusTest extends TestCase
 
     public function testDestroy()
     {
-       $taskStatus = TaskStatuses::factory()->create();
+        $taskStatus = TaskStatuses::factory()->create();
 
         $response = $this
             ->actingAs($this->user)
