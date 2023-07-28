@@ -12,6 +12,10 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
+/**
+ * @property array $newTaskData
+ */
+
 class TaskTest extends TestCase
 {
     use DatabaseTransactions;
@@ -93,8 +97,8 @@ class TaskTest extends TestCase
     public function testUpdateNotAuth()
     {
         $response = $this->patch(route('tasks.update', ['task' => $this->tasks]), [
-            'name' => $this->task->name,
-            'status_id' => $this->taskStatuse->id,
+            'name' => $this->tasks->name,
+            'status_id' => $this->taskStatus->id,
             'created_by_id' => $this->user->id
         ]);
 
