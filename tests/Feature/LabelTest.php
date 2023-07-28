@@ -15,8 +15,8 @@ class LabelTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private mixed $user;
-    private mixed $label;
+    private User $user;
+    private Label $label;
 
     protected function setUp(): void
     {
