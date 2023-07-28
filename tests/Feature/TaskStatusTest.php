@@ -14,8 +14,8 @@ class TaskStatusTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private User $user;
-    private TaskStatuses $taskStatus;
+    private mixed $user;
+    private mixed $taskStatus;
 
     protected function setUp(): void
     {
