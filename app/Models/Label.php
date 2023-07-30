@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Label extends Model
 {
@@ -19,9 +18,9 @@ class Label extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function task(): BelongsToMany
+    public function task(): hasMany
     {
-        return $this->belongsToMany(Tasks::class);
+        return $this->hasMany(Tasks::class);
     }
 
     public function scopeLabelNameById(mixed $query, mixed $id)
