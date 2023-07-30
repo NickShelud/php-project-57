@@ -20,9 +20,9 @@ class TaskTest extends TestCase
 {
     use DatabaseTransactions;
 
-    private mixed $user;
-    private mixed $taskStatus;
-    private mixed $tasks;
+    private User $user;
+    private TaskStatuses $taskStatus;
+    private Tasks $tasks;
 
     protected function setUp(): void
     {

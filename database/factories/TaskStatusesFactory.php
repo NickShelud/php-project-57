@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use App\Models\User;
+use App\Models\TaskStatuses;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\TaskStatuses>
  */
 class TaskStatusesFactory extends Factory
 {
