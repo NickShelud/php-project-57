@@ -10,13 +10,27 @@ use Illuminate\Support\Facades\Auth;
 class TaskStatusesPolicy
 {
     /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can view the model.
+     */
+    public function view(User $user, TaskStatuses $taskStatuses): bool
+    {
+        return true;
+    }
+
+    /**
      * Determine whether the user can create models.
      */
     public function create(User $user): bool
     {
-        if (Auth::check() === false) {
-            return abort(403);
-        }
+        return Auth::check();
     }
 
     /**
@@ -24,9 +38,7 @@ class TaskStatusesPolicy
      */
     public function update(User $user, TaskStatuses $taskStatuses): bool
     {
-        if (Auth::check() === false) {
-            return abort(403);
-        }
+        return Auth::check();
     }
 
     /**
@@ -34,8 +46,22 @@ class TaskStatusesPolicy
      */
     public function delete(User $user, TaskStatuses $taskStatuses): bool
     {
-        if (Auth::check() === false) {
-            return abort(403);
-        }
+        return Auth::check();
+    }
+
+    /**
+     * Determine whether the user can restore the model.
+     */
+    public function restore(User $user, TaskStatuses $taskStatuses): bool
+    {
+        //
+    }
+
+    /**
+     * Determine whether the user can permanently delete the model.
+     */
+    public function forceDelete(User $user, TaskStatuses $taskStatuses): bool
+    {
+        //
     }
 }

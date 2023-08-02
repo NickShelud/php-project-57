@@ -10,6 +10,21 @@ use Illuminate\Support\Facades\Auth;
 class TasksPolicy
 {
     /**
+     * Determine whether the user can view any models.
+     */
+    public function viewAny(User $user): bool
+    {
+        return true;
+    }
+
+    /**
+     * Determine whether the user can view the model.
+     */
+    public function view(User $user, Tasks $tasks): bool
+    {
+        return true;
+    }
+    /**
      * Create a new policy instance.
      */
     public function __construct()
@@ -19,16 +34,12 @@ class TasksPolicy
 
     public function create(User $user): bool
     {
-        if (Auth::check() === false) {
-            return abort(403);
-        }
+        return Auth::check();
     }
 
     public function update(User $user): bool
     {
-        if (Auth::check() === false) {
-            return abort(403);
-        }
+        return Auth::check();
     }
 
     public function delete(User $user, Tasks $task): bool
