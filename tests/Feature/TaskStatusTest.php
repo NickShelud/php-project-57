@@ -12,8 +12,6 @@ use Tests\TestCase;
 
 class TaskStatusTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private User $user;
     private TaskStatuses $taskStatus;
 
@@ -62,8 +60,6 @@ class TaskStatusTest extends TestCase
 
     public function testEdit()
     {
-        $taskStatus = TaskStatuses::factory()->create();
-
         $response = $this
             ->actingAs($this->user)
             ->get(route('task_statuses.edit', ['task_status' => $this->taskStatus]));
@@ -73,8 +69,6 @@ class TaskStatusTest extends TestCase
 
     public function testUpdate()
     {
-        $taskStatus = TaskStatuses::factory()->create();
-
         $response = $this
             ->actingAs($this->user)
             ->patch(route('task_statuses.update', ['task_status' => $this->taskStatus]), [
@@ -87,8 +81,6 @@ class TaskStatusTest extends TestCase
 
     public function testUpdateNotAuth()
     {
-        $taskStatus = TaskStatuses::factory()->create();
-
         $response = $this
             ->patch(route('task_statuses.update', ['task_status' => $this->taskStatus]), [
                 'name' => 'test'
@@ -99,8 +91,6 @@ class TaskStatusTest extends TestCase
 
     public function testDestroy()
     {
-        $taskStatus = TaskStatuses::factory()->create();
-
         $response = $this
             ->actingAs($this->user)
             ->delete(route('task_statuses.destroy', ['task_status' => $this->taskStatus]));

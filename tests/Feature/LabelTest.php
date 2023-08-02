@@ -13,8 +13,6 @@ use Tests\TestCase;
 
 class LabelTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private User $user;
     private Label $label;
 

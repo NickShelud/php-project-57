@@ -13,6 +13,12 @@ use Spatie\QueryBuilder\QueryBuilder;
 
 class TasksController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Tasks::class, 'tasks', [
+            'except' => ['index', 'show'],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -44,10 +50,6 @@ class TasksController extends Controller
     */
     public function create()
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $task = new Tasks();
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
@@ -61,10 +63,6 @@ class TasksController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $data = $this->validate($request, [
             'name' => 'required|max:255|unique:tasks,name',
             'status_id' => 'required',
@@ -97,10 +95,6 @@ class TasksController extends Controller
      */
     public function edit(Tasks $task)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $statuses = TaskStatuses::pluck('name', 'id');
         $users = User::pluck('name', 'id');
         $labels = Label::pluck('name', 'id');
@@ -113,10 +107,6 @@ class TasksController extends Controller
      */
     public function update(Request $request, Tasks $task)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $data = $this->validate($request, [
             'name' => 'required|max:255|unique:tasks,name',
             'status_id' => 'required',
@@ -138,9 +128,6 @@ class TasksController extends Controller
      */
     public function destroy(Tasks $task)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         $task->delete();
         flash(__('trans.flash.taskDelete'))->success();
 

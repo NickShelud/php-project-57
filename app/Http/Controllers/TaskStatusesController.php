@@ -10,6 +10,12 @@ use Illuminate\Support\Facades\Auth;
 
 class TaskStatusesController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(TaskStatuses::class, 'taskStatuses', [
+            'except' => ['index', 'show'],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -25,9 +31,6 @@ class TaskStatusesController extends Controller
      */
     public function create()
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         $status = new TaskStatuses();
 
         return view('status.create', compact('status'));
@@ -38,10 +41,6 @@ class TaskStatusesController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $data = $this->validate($request, [
             'name' => 'required|max:255|unique:task_statuses'
         ]);
@@ -68,10 +67,6 @@ class TaskStatusesController extends Controller
      */
     public function edit(TaskStatuses $taskStatus)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         return view('status.edit', compact('taskStatus'));
     }
 
@@ -80,10 +75,6 @@ class TaskStatusesController extends Controller
      */
     public function update(Request $request, TaskStatuses $taskStatus)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $data = $this->validate($request, [
             'name' => 'required|max:255|unique:task_statuses,name',
         ]);
@@ -101,10 +92,6 @@ class TaskStatusesController extends Controller
      */
     public function destroy(TaskStatuses $taskStatus)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $task = Tasks::where('status_id', $taskStatus->id)->exists();
 
         if ($task) {

@@ -9,6 +9,12 @@ use Illuminate\Support\Facades\Auth;
 
 class LabelController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Label::class, 'label', [
+            'except' => ['index'],
+        ]);
+    }
     /**
      * Display a listing of the resource.
      */
@@ -24,10 +30,6 @@ class LabelController extends Controller
      */
     public function create()
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
-
         $label = new Label();
 
         return view('label.create', compact('label'));
@@ -38,9 +40,6 @@ class LabelController extends Controller
      */
     public function store(Request $request)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         $data = $this->validate($request, [
             'name' => 'required|max:255|unique:labels,name',
             'description' => 'nullable|max:255'
@@ -68,9 +67,6 @@ class LabelController extends Controller
      */
     public function edit(Label $label)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         return view('label.edit', compact('label'));
     }
 
@@ -79,9 +75,6 @@ class LabelController extends Controller
      */
     public function update(Request $request, Label $label)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         $data = $this->validate($request, [
             'name' => 'required|max:255|unique:labels,name',
             'description' => 'nullable|max:255'
@@ -100,9 +93,6 @@ class LabelController extends Controller
      */
     public function destroy(Label $label)
     {
-        if (Auth::user() === null) {
-            abort(403);
-        }
         $task = Tasks::where('label_id', $label->id)->exists();
 
         if ($label->task()->exists()) {

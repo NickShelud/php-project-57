@@ -17,6 +17,20 @@ class TasksPolicy
         //
     }
 
+    public function create(User $user): bool
+    {
+        if (Auth::check() === false) {
+            return abort(403);
+        }
+    }
+
+    public function update(User $user): bool
+    {
+        if (Auth::check() === false) {
+            return abort(403);
+        }
+    }
+
     public function delete(User $user, Tasks $task): bool
     {
         return Auth::check() && $task->created_by_id ===  $user->id;

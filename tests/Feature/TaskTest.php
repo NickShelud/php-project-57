@@ -12,14 +12,8 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 use Tests\TestCase;
 
-/**
- * @property array $newTaskData
- */
-
 class TaskTest extends TestCase
 {
-    use DatabaseTransactions;
-
     private User $user;
     private TaskStatuses $taskStatus;
     private Tasks $tasks;
