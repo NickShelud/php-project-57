@@ -5,7 +5,6 @@ namespace App\Policies;
 use App\Models\TaskStatuses;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
-use Illuminate\Support\Facades\Auth;
 
 class TaskStatusesPolicy
 {
@@ -14,7 +13,7 @@ class TaskStatusesPolicy
      */
     public function viewAny(User $user): bool
     {
-        return true;
+        //
     }
 
     /**
@@ -22,7 +21,7 @@ class TaskStatusesPolicy
      */
     public function view(User $user, TaskStatuses $taskStatuses): bool
     {
-        return true;
+        //
     }
 
     /**
@@ -38,7 +37,7 @@ class TaskStatusesPolicy
      */
     public function update(User $user, TaskStatuses $taskStatuses): bool
     {
-        return Auth::check();
+        return true;
     }
 
     /**
