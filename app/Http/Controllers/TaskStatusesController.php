@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\TaskStatuses;
 use App\Models\Tasks;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
 class TaskStatusesController extends Controller
@@ -13,7 +12,7 @@ class TaskStatusesController extends Controller
     public function __construct()
     {
         $this->authorizeResource(TaskStatuses::class, 'taskStatuses', [
-            'except' => ['index', 'show'],
+            'except' => ['index'],
         ]);
     }
     /**
@@ -94,9 +93,9 @@ class TaskStatusesController extends Controller
     {
         $task = Tasks::where('status_id', $taskStatus->id)->exists();
 
-        if ($task) {
+        if (label->task()->exists()) {
             flash(__('trans.flash.statusNotDelete'))->error();
-            return redirect()->route('task_statuses.index');
+            return back();
         }
 
         $taskStatus->delete();
