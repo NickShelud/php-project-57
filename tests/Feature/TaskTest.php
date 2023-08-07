@@ -28,7 +28,7 @@ class TaskTest extends TestCase
             'created_by_id' => $this->user->id,
         ])->create();
 
-        $this->newTaskData = Tasks::factory()->make()->only([
+        $this->newTaskData = Tasks::factory()->make([
             'name',
             'description',
             'status_id',
