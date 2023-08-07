@@ -93,7 +93,7 @@ class TaskStatusesController extends Controller
     {
         $task = Tasks::where('status_id', $taskStatus->id)->exists();
 
-        if (label->task()->exists()) {
+        if ($taskStatus->tasks()->exists()) {
             flash(__('trans.flash.statusNotDelete'))->error();
             return back();
         }

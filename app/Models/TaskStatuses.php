@@ -20,7 +20,7 @@ class TaskStatuses extends Model
 
     public function tasks(): hasMany
     {
-        return $this->hasMany(Tasks::class);
+        return $this->hasMany(Tasks::class, 'status_id');
     }
 
     public function scopeStatusNameById(mixed $query, mixed $id)
