@@ -17,7 +17,7 @@ class TaskTest extends TestCase
     private User $user;
     private TaskStatuses $taskStatus;
     private Tasks $tasks;
-    private Tasks $newTaskData;
+    private array $newTaskData;
 
     protected function setUp(): void
     {
@@ -28,7 +28,12 @@ class TaskTest extends TestCase
             'created_by_id' => $this->user->id,
         ])->create();
 
-        $this->newTaskData = Tasks::factory()->create();
+        $this->newTaskData = Tasks::factory()->make()->only([
+            'name',
+            'description',
+            'status_id',
+            'assigned_to_id' => $this->user->id,
+        ]);
     }
 
     public function testIndex()
