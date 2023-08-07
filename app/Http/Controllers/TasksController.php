@@ -15,7 +15,7 @@ class TasksController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(Tasks::class, 'tasks', [
+        $this->authorizeResource(Tasks::class, 'task', [
             'except' => ['index', 'show'],
         ]);
     }

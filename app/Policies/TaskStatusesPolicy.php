@@ -5,25 +5,10 @@ namespace App\Policies;
 use App\Models\TaskStatuses;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Auth;
 
 class TaskStatusesPolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
-    public function viewAny(User $user): bool
-    {
-        //
-    }
-
-    /**
-     * Determine whether the user can view the model.
-     */
-    public function view(User $user, TaskStatuses $taskStatuses): bool
-    {
-        //
-    }
-
     /**
      * Determine whether the user can create models.
      */
@@ -37,7 +22,7 @@ class TaskStatusesPolicy
      */
     public function update(User $user, TaskStatuses $taskStatuses): bool
     {
-        return true;
+        return Auth::check();
     }
 
     /**

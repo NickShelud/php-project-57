@@ -11,7 +11,7 @@ class TaskStatusesController extends Controller
 {
     public function __construct()
     {
-        $this->authorizeResource(TaskStatuses::class, 'taskStatuses', [
+        $this->authorizeResource(TaskStatuses::class, 'task_status', [
             'except' => ['index'],
         ]);
     }
