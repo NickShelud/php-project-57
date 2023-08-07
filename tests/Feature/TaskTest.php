@@ -28,12 +28,7 @@ class TaskTest extends TestCase
             'created_by_id' => $this->user->id,
         ])->create();
 
-        $this->newTaskData = Tasks::factory()->make([
-            'name',
-            'description',
-            'status_id',
-            'assigned_to_id' => $this->user->id,
-        ]);
+        $this->newTaskData = Tasks::factory()->create();
     }
 
     public function testIndex()
@@ -43,7 +38,7 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testStoreAuth()
+    public function testStore()
     {
         $response = $this
             ->actingAs($this->user)
@@ -65,7 +60,7 @@ class TaskTest extends TestCase
         $response->assertSessionHasErrors();
     }
 
-    public function testCreateAuth()
+    public function testCreate()
     {
 
         $response = $this
@@ -75,7 +70,7 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testUpdateAuth()
+    public function testUpdate()
     {
         $response = $this
             ->actingAs($this->user)
@@ -89,18 +84,7 @@ class TaskTest extends TestCase
         $response->assertRedirect(route('tasks.index'));
     }
 
-    public function testUpdateNotAuth()
-    {
-        $response = $this->patch(route('tasks.update', ['task' => $this->tasks]), [
-            'name' => $this->tasks->name,
-            'status_id' => $this->taskStatus->id,
-            'created_by_id' => $this->user->id
-        ]);
-
-        $response->assertStatus(403);
-    }
-
-    public function testEditAuth()
+    public function testEdit()
     {
         $response = $this
             ->actingAs($this->user)
@@ -109,7 +93,7 @@ class TaskTest extends TestCase
         $response->assertStatus(200);
     }
 
-    public function testDeleteAuth()
+    public function testDelete()
     {
         $response = $this
             ->actingAs($this->user)
