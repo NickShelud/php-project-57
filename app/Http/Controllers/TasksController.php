@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Spatie\QueryBuilder\AllowedFilter;
 use Spatie\QueryBuilder\QueryBuilder;
+use App\Http\Requests\StoreTasksRequest;
+use App\Http\Requests\UpdateTasksRequest;
 
 class TasksController extends Controller
 {
@@ -61,16 +63,9 @@ class TasksController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTasksRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|max:255|unique:tasks,name',
-            'status_id' => 'required',
-            'description' => 'nullable|max:255',
-            'assigned_to_id' => 'nullable',
-            'label_id' => 'nullable'
-        ]);
-
+        $data = $request->validated();
         flash(__('trans.flash.taskCreate'))->success();
 
         $data['created_by_id'] = Auth::id();
@@ -105,16 +100,9 @@ class TasksController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Tasks $task)
+    public function update(UpdateTasksRequest $request, Tasks $task)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|max:255|unique:tasks,name',
-            'status_id' => 'required',
-            'description' => 'nullable|max:255',
-            'assigned_to_id' => 'nullable',
-            'label_id' => 'nullable'
-        ]);
-
+        $data = $request->validated();
         flash(__('trans.flash.taskUpdate'))->success();
 
         $task->fill($data);

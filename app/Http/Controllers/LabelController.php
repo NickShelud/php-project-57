@@ -6,6 +6,8 @@ use App\Models\Label;
 use App\Models\Tasks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreLabelRequest;
+use App\Http\Requests\UpdateLabelRequest;
 
 class LabelController extends Controller
 {
@@ -38,13 +40,9 @@ class LabelController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreLabelRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|max:255|unique:labels,name',
-            'description' => 'nullable|max:255'
-        ]);
-
+        $data = $request->validated();
         flash(__('trans.flash.labelCreate'))->success();
 
         $label = new Label();
@@ -73,13 +71,9 @@ class LabelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Label $label)
+    public function update(UpdateLabelRequest $request, Label $label)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|max:255|unique:labels,name',
-            'description' => 'nullable|max:255'
-        ]);
-
+        $data = $request->validated();
         flash(__('trans.flash.labelUpdate'))->success();
 
         $label->fill($data);

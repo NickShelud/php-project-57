@@ -6,6 +6,8 @@ use App\Models\TaskStatuses;
 use App\Models\Tasks;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StoreTaskStatusesRequest;
+use App\Http\Requests\UpdateTaskStatusesRequest;
 
 class TaskStatusesController extends Controller
 {
@@ -38,12 +40,9 @@ class TaskStatusesController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTaskStatusesRequest $request)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|max:255|unique:task_statuses'
-        ]);
-
+        $data = $request->validated();
         flash(__('trans.flash.statusCreate'))->success();
 
         $status = new TaskStatuses();
@@ -72,12 +71,9 @@ class TaskStatusesController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, TaskStatuses $taskStatus)
+    public function update(UpdateTaskStatusesRequest $request, TaskStatuses $taskStatus)
     {
-        $data = $this->validate($request, [
-            'name' => 'required|max:255|unique:task_statuses,name',
-        ]);
-
+        $data = $request->validated();
         flash(__('trans.flash.statusUpdate'))->success();
 
         $taskStatus->fill($data);
