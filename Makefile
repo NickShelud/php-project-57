@@ -4,6 +4,9 @@ lint:
 test:
 	php artisan test
 
+database-prepare:
+	touch database/database.postgresql
+
 start-app:
 	php artisan serve --host=0.0.0.0 --port=$(PORT)
 
