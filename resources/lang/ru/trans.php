@@ -80,5 +80,6 @@
         'password' => 'Пароль',
         'confirmPassword' => 'Подтверждение',
         'alreadyRegister' => 'Уже зарегистрированы?',
-        'registration' => 'Зарегистрировать'
+        'registration' => 'Зарегистрировать',
+        'dataConfirm' => 'Вы уверены?'
     ];

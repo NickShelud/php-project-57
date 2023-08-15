@@ -14,12 +14,16 @@ class TaskStatusTest extends TestCase
 {
     private User $user;
     private TaskStatuses $taskStatus;
+    private string $fakeNameForTaskStatus;
+    private string $fakeNameForTaskStatusUpdate;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->user = User::factory()->create();
         $this->taskStatus = TaskStatuses::factory()->create();
+        $this->fakeNameForTaskStatus = fake()->name();
+        $this->fakeNameForTaskStatusUpdate = fake()->name();
     }
 
     public function testIndex()
@@ -41,10 +45,11 @@ class TaskStatusTest extends TestCase
         $response = $this
             ->actingAs($this->user)
             ->post(route('task_statuses.store'), [
-                'name' => fake()->name()
+                'name' => $this->fakeNameForTaskStatus
         ]);
 
         $response->assertSessionHasNoErrors();
+        $this->assertDatabaseHas('task_statuses', ['name' => $this->fakeNameForTaskStatus]);
         $response->assertRedirect(route('task_statuses.index'));
     }
 
@@ -72,10 +77,11 @@ class TaskStatusTest extends TestCase
         $response = $this
             ->actingAs($this->user)
             ->patch(route('task_statuses.update', ['task_status' => $this->taskStatus]), [
-                'name' => fake()->name()
+                'name' => $this->fakeNameForTaskStatusUpdate
         ]);
 
         $response->assertSessionHasNoErrors();
+        $this->assertDatabaseHas('task_statuses', ['name' => $this->fakeNameForTaskStatusUpdate]);
         $response->assertRedirect(route('task_statuses.index'));
     }
 
@@ -96,6 +102,7 @@ class TaskStatusTest extends TestCase
             ->delete(route('task_statuses.destroy', ['task_status' => $this->taskStatus]));
 
         $response->assertSessionHasNoErrors();
+        $this->assertDatabaseMissing('labels', ['id' => $this->taskStatus->id]);
         $response->assertRedirect(route('task_statuses.index'));
     }
 }

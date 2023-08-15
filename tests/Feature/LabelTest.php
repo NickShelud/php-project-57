@@ -15,12 +15,16 @@ class LabelTest extends TestCase
 {
     private User $user;
     private Label $label;
+    private string $fakeNameForLabel;
+    private string $fakeNameForUpdateLabel;
 
     protected function setUp(): void
     {
         parent::setUp();
         $this->user = User::factory()->create();
         $this->label = Label::factory()->create();
+        $this->fakeNameForLabel = fake()->name();
+        $this->fakeNameForUpdateLabel = fake()->name();
     }
 
     public function testIndex()
@@ -43,9 +47,10 @@ class LabelTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user)
-            ->post(route('labels.store', ['name' => fake()->name()]));
+            ->post(route('labels.store', ['name' => $this->fakeNameForLabel]));
 
         $response->assertSessionHasNoErrors();
+        $this->assertDatabaseHas('labels', ['name' => $this->fakeNameForLabel]);
         $response->assertRedirect(route('labels.index'));
     }
 
@@ -73,9 +78,10 @@ class LabelTest extends TestCase
     {
         $response = $this
             ->actingAs($this->user)
-            ->patch(route('labels.update', ['label' => $this->label, 'name' => fake()->name()]));
+            ->patch(route('labels.update', ['label' => $this->label, 'name' =>  $this->fakeNameForUpdateLabel]));
 
         $response->assertSessionHasNoErrors();
+        $this->assertDatabaseHas('labels', ['name' => $this->fakeNameForUpdateLabel, 'id' => $this->label->id]);
         $response->assertRedirect(route('labels.index'));
     }
 
@@ -96,6 +102,7 @@ class LabelTest extends TestCase
             ->delete(route('labels.destroy', ['label' => $this->label->id]));
 
         $response->assertSessionHasNoErrors();
+        $this->assertDatabaseMissing('labels', ['id' => $this->label->id]);
         $response->assertRedirect(route('labels.index'));
     }
 }
