@@ -20,4 +20,4 @@ jobs:
     - name: Run database prepare
       run: make database-prepare
     - name: Run test
-      run: make test
+      run: ./vendor/bin/pest
