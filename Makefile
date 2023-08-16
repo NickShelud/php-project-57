@@ -5,7 +5,7 @@ test:
 	php artisan test
 
 database-prepare:
-	touch database/database.postgresql
+	touch database/database.sqlite
 	php artisan migrate:fresh --force --seed
 
 start-app:

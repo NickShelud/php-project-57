@@ -9,8 +9,7 @@
     @auth
         <div>
         <a href="{{route('task_statuses.create')}}" 
-                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" 
-                onclick="event.preventDefault(); document.getElementById('create-form').submit();">{{__('trans.taskStatus.create')}}</a>   
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" >{{__('trans.taskStatus.create')}}</a>   
         </div>
     @endauth
     <div class="grid col-span-full">
