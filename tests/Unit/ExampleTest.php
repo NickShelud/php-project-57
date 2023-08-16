@@ -8,6 +8,6 @@ class ExampleTest extends TestCase
 {
     public function testThatTrueIsTrue()
     {
-        expect(true)->toBeTrue();
+        $this->assertTrue(true);
     }
 }
