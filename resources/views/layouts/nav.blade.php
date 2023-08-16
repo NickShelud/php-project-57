@@ -30,7 +30,12 @@
                 @endguest
                 @auth
                 <div>
-                    <a href="{{ route('logout') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" method="POST">{{__('trans.nav.logout')}}</a>
+                    <<a href="{{ route('logout') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a>
+
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>      
                 </div>
                 
                 @endauth
