@@ -6,7 +6,7 @@ test:
 
 database-prepare:
 	touch database/database.postgresql
-	sudo service postgresql restart
+	php artisan migrate:fresh --force --seed
 
 start-app:
 	php artisan serve --host=0.0.0.0 --port=$(PORT)
