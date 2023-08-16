@@ -8,7 +8,7 @@
             'name' => 'Менеджер задач',
             'registration' => 'Регистрация',
             'login' => 'Войти',
-            'logout' => 'Выйти'
+            'logout' => 'Выход'
         ],
 
         'taskStatus' => [
