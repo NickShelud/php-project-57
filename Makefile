@@ -5,6 +5,7 @@ test:
 	php artisan test
 
 database-prepare:
+	php -r "file_exists('.env') || copy('.env.testing.1', '.env');"
 	touch database/database.sqlite
 	php artisan migrate:fresh --force --seed
 
