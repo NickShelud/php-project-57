@@ -29,13 +29,10 @@
                     <button name='registration'><a href="{{route('register')}}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">{{__('trans.nav.registration')}}</a></button>
                 @endguest
                 @auth
-
-                <a href="{{ route('logout') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{__('trans.nav.logout')}}</a>
-
-
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>    
+                <div>
+                    <a href="{{ route('logout') }}" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded ml-2">{{__('trans.nav.logout')}}</a>
+                </div>
+                
                 @endauth
                 </div>
             </div>

@@ -8,7 +8,7 @@ database-prepare:
 	cp -n .env.example .env || true
 	php artisan key:generate --env=testing
 	php -r "file_exists('.env') || copy('.env.testing.1', '.env');"
-	touch database/database.sqlite
+	touch bootstrap/cache/config.php
 	php artisan migrate:fresh --force --seed
 
 start-app:
