@@ -6,7 +6,6 @@ test:
 
 database-prepare:
 	cp -n .env.example .env || true
-	php artisan key:generate --env=testing
 	touch database/database.sqlite
 	php artisan migrate:fresh --force --seed
 
