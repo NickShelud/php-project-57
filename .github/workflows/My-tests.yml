@@ -19,5 +19,7 @@ jobs:
       run: make install
     - name: Run database prepare
       run: make database-prepare
+    - name: Run npm intall
+      run: make install-npm
     - name: Run test
       run: ./vendor/bin/pest

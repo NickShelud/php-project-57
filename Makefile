@@ -17,6 +17,7 @@ install:
 
 install-npm:
 	npm ci
+	npm run build
 
 validate:
 	composer validate
